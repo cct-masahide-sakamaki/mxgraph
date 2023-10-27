@@ -8,7 +8,7 @@ namespace com.mxgraph
     /// <summary>
     /// Fast organic layout algorithm.
     /// </summary>
-    public class mxFastOrganicLayout: mxIGraphLayout
+    public class mxFastOrganicLayout : mxIGraphLayout
     {
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace com.mxgraph
                     // acted on by this layout
                     if (index != null)
                     {
-                        neighbours[i][j] = (int) index;
+                        neighbours[i][j] = (int)index;
                     }
 
                     // Else if index of the other cell doesn't correspond to
@@ -373,7 +373,7 @@ namespace com.mxgraph
                         }
                         else
                         {
-                            minx = Math.Min((double) minx, geo.X);
+                            minx = Math.Min((double)minx, geo.X);
                         }
 
                         if (miny == null)
@@ -382,7 +382,7 @@ namespace com.mxgraph
                         }
                         else
                         {
-                            miny = Math.Min((double) miny, geo.Y);
+                            miny = Math.Min((double)miny, geo.Y);
                         }
                     }
                 }
@@ -401,12 +401,12 @@ namespace com.mxgraph
                         {
                             if (minx != null)
                             {
-                                geo.X -= ((double) minx) - 1;
+                                geo.X -= ((double)minx) - 1;
                             }
 
                             if (miny != null)
                             {
-                                geo.Y -= ((double) miny) - 1;
+                                geo.Y -= ((double)miny) - 1;
                             }
                         }
                     }

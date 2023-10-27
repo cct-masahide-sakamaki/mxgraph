@@ -37,7 +37,7 @@ namespace com.mxgraph
         /// Implements an entity relation style for edges (as used in database
         /// schema diagrams).
         /// </summary>
-        public static mxEdgeStyleFunction EntityRelation = delegate(
+        public static mxEdgeStyleFunction EntityRelation = delegate (
             mxCellState state, mxCellState source,
             mxCellState target, List<mxPoint> points,
             List<mxPoint> result)
@@ -74,7 +74,7 @@ namespace com.mxgraph
                 }
             }
 
-			bool isTargetLeft = true;
+            bool isTargetLeft = true;
 
             if (pe != null)
             {
@@ -134,12 +134,12 @@ namespace com.mxgraph
 
                 result.Add(arr);
             }
-		};
+        };
 
         /// <summary>
         /// Implements a self-reference, aka. loop.
         /// </summary>
-        public static mxEdgeStyleFunction Loop = delegate(
+        public static mxEdgeStyleFunction Loop = delegate (
             mxCellState state, mxCellState source,
             mxCellState target, List<mxPoint> points,
             List<mxPoint> result)
@@ -223,14 +223,14 @@ namespace com.mxgraph
                 result.Add(new mxPoint(x - dx, y - dy));
                 result.Add(new mxPoint(x + dx, y + dy));
             }
-	    };
+        };
 
         /// <summary>
         /// Uses either SideToSide or TopToBottom depending on the horizontal
         /// flag in the cell style. SideToSide is used if horizontal is true or
         /// unspecified.
         /// </summary>
-        public static mxEdgeStyleFunction ElbowConnector = delegate(
+        public static mxEdgeStyleFunction ElbowConnector = delegate (
             mxCellState state, mxCellState source,
             mxCellState target, List<mxPoint> points,
             List<mxPoint> result)
@@ -238,10 +238,10 @@ namespace com.mxgraph
             mxPoint pt = (points != null && points.Count > 0) ? points[0] : null;
 
             bool vertical = false;
-    		bool horizontal = false;
+            bool horizontal = false;
 
             if (source != null && target != null)
-		    {
+            {
                 if (pt != null)
                 {
                     double left = Math.Min(source.X, target.X);
@@ -273,25 +273,25 @@ namespace com.mxgraph
                                 + target.Height);
 
                         horizontal = top == bottom;
-                    } 
+                    }
                 }
-		    }
+            }
 
-		    if (!horizontal && (vertical ||
-			    mxUtils.GetString(state.Style, mxConstants.STYLE_ELBOW, "").Equals(mxConstants.ELBOW_VERTICAL)))
-		    {
-			    mxEdgeStyle.TopToBottom(state, source, target, points, result);
-		    }
-		    else
-		    {
-			    mxEdgeStyle.SideToSide(state, source, target, points, result);
-		    }
+            if (!horizontal && (vertical ||
+                mxUtils.GetString(state.Style, mxConstants.STYLE_ELBOW, "").Equals(mxConstants.ELBOW_VERTICAL)))
+            {
+                mxEdgeStyle.TopToBottom(state, source, target, points, result);
+            }
+            else
+            {
+                mxEdgeStyle.SideToSide(state, source, target, points, result);
+            }
         };
 
         /// <summary>
         /// Implements a vertical elbow edge.
         /// </summary>
-        public static mxEdgeStyleFunction SideToSide = delegate(
+        public static mxEdgeStyleFunction SideToSide = delegate (
             mxCellState state, mxCellState source,
             mxCellState target, List<mxPoint> points,
             List<mxPoint> result)
@@ -379,7 +379,7 @@ namespace com.mxgraph
         /// <summary>
         /// Implements a horizontal elbow edge.
         /// </summary>
-        public static mxEdgeStyleFunction TopToBottom = delegate(
+        public static mxEdgeStyleFunction TopToBottom = delegate (
             mxCellState state, mxCellState source,
             mxCellState target, List<mxPoint> points,
             List<mxPoint> result)

@@ -2,8 +2,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
+using System.Text;
 
 namespace com.mxgraph
 {
@@ -118,13 +118,13 @@ namespace com.mxgraph
         public Dictionary<string, Object> GetCellStyle(string name,
             Dictionary<string, Object> defaultStyle)
         {
-		    Dictionary<string, Object> style = defaultStyle;
+            Dictionary<string, Object> style = defaultStyle;
 
-		    if (name != null && name.Length > 0)
+            if (name != null && name.Length > 0)
             {
                 string[] pairs = name.Split(';');
 
-			    if (pairs != null)
+                if (pairs != null)
                 {
                     if (style != null && !name.StartsWith(";"))
                     {
@@ -135,7 +135,7 @@ namespace com.mxgraph
                         style = new Dictionary<string, Object>();
                     }
 
-			 	    for (int i = 0; i < pairs.Length; i++)
+                    for (int i = 0; i < pairs.Length; i++)
                     {
                         string tmp = pairs[i];
                         int c = tmp.IndexOf('=');
@@ -163,11 +163,11 @@ namespace com.mxgraph
                                 style[entry.Key] = entry.Value;
                             }
                         }
-				    }
-			    }
-		    }
+                    }
+                }
+            }
 
-		    return style;
+            return style;
         }
 
     }

@@ -167,25 +167,25 @@ namespace com.mxgraph
         /// </summary>
         /// <param name="node">Node to be added.</param>
         protected void AddElement(XmlNode node)
-	    {
-		    if (node is XmlElement)
-		    {
+        {
+            if (node is XmlElement)
+            {
                 string id = ((XmlElement)node).GetAttribute("id");
-			
-			    if (id != null && !elements.ContainsKey(id))
-			    {
+
+                if (id != null && !elements.ContainsKey(id))
+                {
                     elements[id] = node;
-			    }
-		    }
-		
-		    node = node.FirstChild;
-		
-		    while (node != null)
-		    {
-			    AddElement(node);
+                }
+            }
+
+            node = node.FirstChild;
+
+            while (node != null)
+            {
+                AddElement(node);
                 node = node.NextSibling;
-		    }
-	    }
+            }
+        }
 
         /// <summary>
         /// Returns the ID of the specified object. This implementation calls
@@ -367,25 +367,25 @@ namespace com.mxgraph
             if (node != null &&
                 node.NodeType == XmlNodeType.Element)
             {
-			    // Tries to find a codec for the given node name. If that does
-			    // not return a codec then the node is the user object (an XML node
-			    // that contains the mxCell, aka inversion).
-			    mxObjectCodec decoder = mxCodecRegistry.GetCodec(node.Name);
+                // Tries to find a codec for the given node name. If that does
+                // not return a codec then the node is the user object (an XML node
+                // that contains the mxCell, aka inversion).
+                mxObjectCodec decoder = mxCodecRegistry.GetCodec(node.Name);
 
                 // Tries to find the codec for the cell inside the user object.
                 // This assumes all node names inside the user object are either
                 // not registered or they correspond to a class for cells.
                 if (decoder == null)
-			    {
+                {
                     XmlNode child = node.FirstChild;
-					
-					while (child != null &&
-						!(decoder is mxCellCodec))
-					{
-						decoder = mxCodecRegistry.GetCodec(child.Name);
-						child = child.NextSibling;
-					}
-			    }
+
+                    while (child != null &&
+                        !(decoder is mxCellCodec))
+                    {
+                        decoder = mxCodecRegistry.GetCodec(child.Name);
+                        child = child.NextSibling;
+                    }
+                }
 
                 if (!(decoder is mxCellCodec))
                 {

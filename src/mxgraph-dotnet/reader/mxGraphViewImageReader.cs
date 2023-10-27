@@ -1,9 +1,9 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Xml;
 
@@ -178,7 +178,7 @@ namespace com.mxgraph
         {
             if (viewReader.Canvas is mxImageCanvas)
             {
-                return ((mxImageCanvas) viewReader.Canvas).Destroy();
+                return ((mxImageCanvas)viewReader.Canvas).Destroy();
             }
 
             return null;

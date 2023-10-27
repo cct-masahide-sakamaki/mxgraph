@@ -1,8 +1,8 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace com.mxgraph

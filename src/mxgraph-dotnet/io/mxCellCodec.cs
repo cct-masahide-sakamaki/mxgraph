@@ -18,7 +18,8 @@ namespace com.mxgraph
         /// </summary>
         public mxCellCodec()
             : this(new mxCell(), new string[] { "children", "edges" }, new string[] { "parent", "source", "target" },
-                    null) { }
+                    null)
+        { }
 
         /// <summary>
         /// Constructs a new cell codec for the given template.

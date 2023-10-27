@@ -1,9 +1,9 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Xml;
 
@@ -29,7 +29,7 @@ namespace com.mxgraph
         /// <summary>
         /// Constructs a new graph view reader.
         /// </summary>
-        public mxGraphViewReader(): this(null) { }
+        public mxGraphViewReader() : this(null) { }
 
         /// <summary>
         /// Constructs a new graph view reader and reads the given display XML data.

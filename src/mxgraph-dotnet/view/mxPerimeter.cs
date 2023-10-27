@@ -30,7 +30,7 @@ namespace com.mxgraph
         /// <summary>
         /// Describes a rectangular perimeter for the given bounds.
         /// </summary>
-        public static mxPerimeterFunction RectanglePerimeter = delegate(
+        public static mxPerimeterFunction RectanglePerimeter = delegate (
             mxRectangle bounds, mxCellState vertex, mxPoint next, bool orthogonal)
         {
             double cx = bounds.GetCenterX();
@@ -108,7 +108,7 @@ namespace com.mxgraph
         /// <summary>
         /// Describes an elliptic perimeter.
         /// </summary>
-        public static mxPerimeterFunction EllipsePerimeter = delegate(
+        public static mxPerimeterFunction EllipsePerimeter = delegate (
             mxRectangle bounds, mxCellState vertex, mxPoint next, bool orthogonal)
         {
             double x = bounds.X;
@@ -196,7 +196,7 @@ namespace com.mxgraph
             // Correct solution
             double xout = 0;
             double yout = 0;
-            
+
             if (dist1 < dist2)
             {
                 xout = xout1;
@@ -207,14 +207,14 @@ namespace com.mxgraph
                 xout = xout2;
                 yout = yout2;
             }
-            
+
             return new mxPoint(xout, yout);
         };
 
         /// <summary>
         /// Describes a rhombus (aka diamond) perimeter.
         /// </summary>
-        public static mxPerimeterFunction RhombusPerimeter = delegate(
+        public static mxPerimeterFunction RhombusPerimeter = delegate (
             mxRectangle bounds, mxCellState vertex, mxPoint next, bool orthogonal)
         {
             double x = bounds.X;
@@ -295,11 +295,11 @@ namespace com.mxgraph
                         + w, cy);
             }
         };
-    
+
         /// <summary>
         /// Describes a triangle perimeter.
         /// </summary>
-        public static mxPerimeterFunction TrianglePerimeter = delegate(
+        public static mxPerimeterFunction TrianglePerimeter = delegate (
             mxRectangle bounds, mxCellState vertex, mxPoint next, bool orthogonal)
         {
             string direction = (vertex != null) ? mxUtils.GetString(
@@ -308,17 +308,17 @@ namespace com.mxgraph
             bool vertical = direction.Equals(mxConstants.DIRECTION_NORTH) ||
                 direction.Equals(mxConstants.DIRECTION_SOUTH);
 
-			double x = bounds.X;
-			double y = bounds.Y;
-			double w = bounds.Width;
-			double h = bounds.Height;
+            double x = bounds.X;
+            double y = bounds.Y;
+            double w = bounds.Width;
+            double h = bounds.Height;
 
-			double cx = x + w / 2;
-			double cy = y + h / 2;
+            double cx = x + w / 2;
+            double cy = y + h / 2;
 
-			mxPoint start = new mxPoint(x, y);
-			mxPoint corner = new mxPoint(x + w, cy);
-			mxPoint end = new mxPoint(x, y + h);
+            mxPoint start = new mxPoint(x, y);
+            mxPoint corner = new mxPoint(x + w, cy);
+            mxPoint end = new mxPoint(x, y + h);
 
             if (direction.Equals(mxConstants.DIRECTION_NORTH))
             {
@@ -338,122 +338,122 @@ namespace com.mxgraph
                 end = new mxPoint(x + w, y + h);
             }
 
-			// Compute angle
-			double dx = next.X - cx;
-			double dy = next.Y - cy;
+            // Compute angle
+            double dx = next.X - cx;
+            double dy = next.Y - cy;
 
-			double alpha = (vertical) ? Math.Atan2(dx, dy) : Math.Atan2(dy, dx);
-			double t = (vertical) ? Math.Atan2(w, h) : Math.Atan2(h, w);
-			
+            double alpha = (vertical) ? Math.Atan2(dx, dy) : Math.Atan2(dy, dx);
+            double t = (vertical) ? Math.Atan2(w, h) : Math.Atan2(h, w);
+
             bool baseSide = false;
-			
-			if (direction.Equals(mxConstants.DIRECTION_NORTH) ||
-				direction.Equals(mxConstants.DIRECTION_WEST))
-			{
-				baseSide = alpha > -t && alpha < t;
-			}
-			else
-			{
-				baseSide = alpha < -Math.PI + t || alpha > Math.PI - t;	
-			}
+
+            if (direction.Equals(mxConstants.DIRECTION_NORTH) ||
+                direction.Equals(mxConstants.DIRECTION_WEST))
+            {
+                baseSide = alpha > -t && alpha < t;
+            }
+            else
+            {
+                baseSide = alpha < -Math.PI + t || alpha > Math.PI - t;
+            }
 
             mxPoint result = null;
 
-			if (baseSide)
-			{
-				if (orthogonal &&
-					((vertical &&
-					next.X >= start.X &&
-					next.X <= end.X) ||
-					(!vertical &&
-					next.Y >= start.Y &&
-					next.Y <= end.Y)))
-				{
-					if (vertical)
-					{
-						result = new mxPoint(next.X, start.Y);
-					}
-					else
-					{
-						result = new mxPoint(start.X, next.Y);
-					}
-				}
-				else
-				{
+            if (baseSide)
+            {
+                if (orthogonal &&
+                    ((vertical &&
+                    next.X >= start.X &&
+                    next.X <= end.X) ||
+                    (!vertical &&
+                    next.Y >= start.Y &&
+                    next.Y <= end.Y)))
+                {
+                    if (vertical)
+                    {
+                        result = new mxPoint(next.X, start.Y);
+                    }
+                    else
+                    {
+                        result = new mxPoint(start.X, next.Y);
+                    }
+                }
+                else
+                {
                     if (direction.Equals(mxConstants.DIRECTION_EAST))
                     {
                         result = new mxPoint(x, y + h / 2 -
                             w * Math.Tan(alpha) / 2);
                     }
                     else if (direction.Equals(mxConstants.DIRECTION_NORTH))
-					{
-						result = new mxPoint(x + w / 2 + h * Math.Tan(alpha) / 2,
-							y + h);
-					}
+                    {
+                        result = new mxPoint(x + w / 2 + h * Math.Tan(alpha) / 2,
+                            y + h);
+                    }
                     else if (direction.Equals(mxConstants.DIRECTION_SOUTH))
-					{
-						result = new mxPoint(x + w / 2 - h * Math.Tan(alpha) / 2,
-							y);
-					}
-					else if (direction.Equals(mxConstants.DIRECTION_WEST))
-					{
-						result = new mxPoint(x + w, y + h / 2 +
-							w * Math.Tan(alpha) / 2);
-					}
-					else
-					{
-						
-					}
-				}
-			}
-			else
-			{
-				if (orthogonal)
-				{
-					mxPoint pt = new mxPoint(cx, cy);
-			
-					if (next.Y >= y && next.Y <= y + h)
-					{
-						pt.X = (vertical) ? cx : (
+                    {
+                        result = new mxPoint(x + w / 2 - h * Math.Tan(alpha) / 2,
+                            y);
+                    }
+                    else if (direction.Equals(mxConstants.DIRECTION_WEST))
+                    {
+                        result = new mxPoint(x + w, y + h / 2 +
+                            w * Math.Tan(alpha) / 2);
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                if (orthogonal)
+                {
+                    mxPoint pt = new mxPoint(cx, cy);
+
+                    if (next.Y >= y && next.Y <= y + h)
+                    {
+                        pt.X = (vertical) ? cx : (
                             (direction.Equals(mxConstants.DIRECTION_WEST)) ?
-								x + w : x);
-						pt.Y = next.Y;
-					}
-					else if (next.X >= x && next.X <= x + w)
-					{
-						pt.X = next.X;
-						pt.Y = (!vertical) ? cy : (
+                                x + w : x);
+                        pt.Y = next.Y;
+                    }
+                    else if (next.X >= x && next.X <= x + w)
+                    {
+                        pt.X = next.X;
+                        pt.Y = (!vertical) ? cy : (
                             (direction.Equals(mxConstants.DIRECTION_NORTH)) ?
-								y + h : y);
-					}
-					
-					// Compute angle
-					dx = next.X - pt.X;
-					dy = next.Y - pt.Y;
-					
-					cx = pt.X;
-					cy = pt.Y;
-				}
+                                y + h : y);
+                    }
 
-				if ((vertical && next.X <= x + w / 2) ||
-					(!vertical && next.Y <= y + h / 2))
-				{
-					result = mxUtils.Intersection(next.X, next.Y, cx, cy,
-						start.X, start.Y, corner.X, corner.Y);
-				}
-				else
-				{
-					result = mxUtils.Intersection(next.X, next.Y, cx, cy,
-						corner.X, corner.Y, end.X, end.Y);
-				}
-			}
+                    // Compute angle
+                    dx = next.X - pt.X;
+                    dy = next.Y - pt.Y;
 
-			if (result == null)
-			{
-				result = new mxPoint(cx, cy);
-			}
+                    cx = pt.X;
+                    cy = pt.Y;
+                }
 
-			return result;
+                if ((vertical && next.X <= x + w / 2) ||
+                    (!vertical && next.Y <= y + h / 2))
+                {
+                    result = mxUtils.Intersection(next.X, next.Y, cx, cy,
+                        start.X, start.Y, corner.X, corner.Y);
+                }
+                else
+                {
+                    result = mxUtils.Intersection(next.X, next.Y, cx, cy,
+                        corner.X, corner.Y, end.X, end.Y);
+                }
+            }
+
+            if (result == null)
+            {
+                result = new mxPoint(cx, cy);
+            }
+
+            return result;
         };
 
     }

@@ -1,8 +1,8 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace com.mxgraph
@@ -14,21 +14,21 @@ namespace com.mxgraph
     {
         /// <summary>
         /// Defines the portion of the cell which is
-	    /// to be used as a connectable region.
+        /// to be used as a connectable region.
         /// </summary>
         public static double DEFAULT_HOTSPOT = 0.3;
 
         /// <summary>
         /// Defines the minimum size in pixels of the 
-	    /// portion of the cell cell which is to be 
-	    /// used as a connectable region.
+        /// portion of the cell cell which is to be 
+        /// used as a connectable region.
         /// </summary>
         public static double MIN_HOTSPOT_SIZE = 8;
 
         /// <summary>
         /// Defines the SVG namespace.
         /// </summary>
-	    public static string NS_SVG = "http://www.w3.org/2000/svg";
+        public static string NS_SVG = "http://www.w3.org/2000/svg";
 
         /// <summary>
         /// Defines the XHTML namespace.
@@ -38,7 +38,7 @@ namespace com.mxgraph
         /// <summary>
         /// Defines the XLink namespace.
         /// </summary>
-	    public static string NS_XLINK = "http://www.w3.org/1999/xlink";
+        public static string NS_XLINK = "http://www.w3.org/1999/xlink";
 
         /// <summary>
         /// Comma separated list of default fonts for CSS properties.
@@ -139,7 +139,7 @@ namespace com.mxgraph
         /// Defines the size of the arcs for rounded edges. Default is 10.
         /// </summary>
         public static double LINE_ARCSIZE = 10;
-	
+
         /// <summary>
         /// Defines the spacing between the arrow shape and its terminals. Default
         /// is 10.
@@ -166,7 +166,7 @@ namespace com.mxgraph
         /// Possible values are the functions defined
         /// in mxPerimeter.
         /// </summary>
-	    public static string STYLE_PERIMETER = "perimeter";
+        public static string STYLE_PERIMETER = "perimeter";
 
         /// <summary>
         /// Defines the ID of the cell that should be used for computing the
@@ -185,18 +185,18 @@ namespace com.mxgraph
         /// <summary>
         /// Defines the key for the opacity style (0-100).
         /// </summary>
-	    public static string STYLE_OPACITY = "opacity";
+        public static string STYLE_OPACITY = "opacity";
 
         /// <summary>
         /// Defines the key for the text fill opacity style (0-100).
         /// </summary>
         public static string STYLE_FILL_OPACITY = "fillOpacity";
-        
+
         /// <summary>
         /// Defines the key for the stroke opacity style (0-100).
         /// </summary>
         public static string STYLE_STROKE_OPACITY = "strokeOpacity";
-        
+
         /// <summary>
         /// Defines the key for the text opacity style (0-100).
         /// </summary>
@@ -212,51 +212,51 @@ namespace com.mxgraph
         /// </summary>
         public static string STYLE_OVERFLOW = "overflow";
 
-	    /// <summary>
-	    /// Defines if the connection points on either end of the edge should be
+        /// <summary>
+        /// Defines if the connection points on either end of the edge should be
         /// computed so that the edge is vertical or horizontal if possible and
         /// if the point is not at a fixed location. Default is false. This is
         /// used in mxGraph.IsOrthogonal, which also returns true if the edgeStyle
         /// of the edge is an elbow or entity.
-	    /// </summary>
-	    public static string STYLE_ORTHOGONAL = "orthogonal";
+        /// </summary>
+        public static string STYLE_ORTHOGONAL = "orthogonal";
 
-	    /// <summary>
-	    /// Defines the key for the horizontal relative coordinate connection point
+        /// <summary>
+        /// Defines the key for the horizontal relative coordinate connection point
         /// of an edge with its source terminal.
-	    /// </summary>
-	    public static string STYLE_EXIT_X = "exitX";
+        /// </summary>
+        public static string STYLE_EXIT_X = "exitX";
 
-	    /// <summary>
-	    /// Defines the key for the vertical relative coordinate connection point
+        /// <summary>
+        /// Defines the key for the vertical relative coordinate connection point
         /// of an edge with its source terminal.
-	    /// </summary>
-	    public static string STYLE_EXIT_Y = "exitY";
+        /// </summary>
+        public static string STYLE_EXIT_Y = "exitY";
 
-	    /// <summary>
-	    /// Defines if the perimeter should be used to find the exact entry point
+        /// <summary>
+        /// Defines if the perimeter should be used to find the exact entry point
         /// along the perimeter of the source. Possible values are 0 (false) and
         /// 1 (true). Default is 1 (true).
-	    /// </summary>
-	    public static string STYLE_EXIT_PERIMETER = "exitPerimeter";
+        /// </summary>
+        public static string STYLE_EXIT_PERIMETER = "exitPerimeter";
 
-	    /// <summary>
-	    /// Defines the key for the horizontal relative coordinate connection point
+        /// <summary>
+        /// Defines the key for the horizontal relative coordinate connection point
         /// of an edge with its target terminal.
-	    /// </summary>
-	    public static string STYLE_ENTRY_X = "entryX";
+        /// </summary>
+        public static string STYLE_ENTRY_X = "entryX";
 
-	    /// <summary>
-	    /// Defines the key for the vertical relative coordinate connection point
+        /// <summary>
+        /// Defines the key for the vertical relative coordinate connection point
         /// of an edge with its target terminal.
-	    /// </summary>
-	    public static string STYLE_ENTRY_Y = "entryY";
+        /// </summary>
+        public static string STYLE_ENTRY_Y = "entryY";
 
-	    /// <summary>
-	    /// Defines if the perimeter should be used to find the exact entry point
+        /// <summary>
+        /// Defines if the perimeter should be used to find the exact entry point
         /// along the perimeter of the target. Possible values are 0 (false) and
         /// 1 (true). Default is 1 (true).
-	    /// </summary>
+        /// </summary>
         public static string STYLE_ENTRY_PERIMETER = "entryPerimeter";
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace com.mxgraph
         /// Defines the key for the fillColor style. The value is a string
         /// expression supported by ColorTranslator.FromHtml.
         /// </summary>
-	    public static string STYLE_FILLCOLOR = "fillColor";
+        public static string STYLE_FILLCOLOR = "fillColor";
 
         /// <summary>
         /// Defines the key for the swimlaneFillColor style. The value is a string
@@ -291,7 +291,7 @@ namespace com.mxgraph
         /// expression supported by ColorTranslator.FromHtml. This is ignored
         /// if no fill color is defined.
         /// </summary>
-	    public static string STYLE_GRADIENTCOLOR = "gradientColor";
+        public static string STYLE_GRADIENTCOLOR = "gradientColor";
 
         /// <summary>
         /// Defines the key for the gradient direction. Possible values are
@@ -310,21 +310,21 @@ namespace com.mxgraph
         /// Defines the key for the strokeColor style. The value is a string
         /// expression supported by ColorTranslator.FromHtml.
         /// </summary>
-	    public static string STYLE_STROKECOLOR = "strokeColor";
+        public static string STYLE_STROKECOLOR = "strokeColor";
 
         /// <summary>
         /// Defines the key for the separatorColor style. The value is a string
         /// expression supported by ColorTranslator.FromHtml. This style is only
         /// used for SHAPE_SWIMLANE shapes.
         /// </summary>
-	    public static string STYLE_SEPARATORCOLOR = "separatorColor";
+        public static string STYLE_SEPARATORCOLOR = "separatorColor";
 
         /// <summary>
         /// Defines the key for the strokeWidth style. The type of the value is
         /// <i>float</i> and the possible range is any non-negative value.
         /// The value reflects the stroke width in pixels.
         /// </summary>
-	    public static string STYLE_STROKEWIDTH = "strokeWidth";
+        public static string STYLE_STROKEWIDTH = "strokeWidth";
 
         /// <summary>
         /// Defines the key for the align style. Possible values are
@@ -338,7 +338,7 @@ namespace com.mxgraph
         /// bounds relative to the vertex, to move the label bounds horizontally, use
         /// <i>STYLE_LABEL_POSITION</i>
         /// </summary>
-	    public static string STYLE_ALIGN = "align";
+        public static string STYLE_ALIGN = "align";
 
         /// <summary>
         /// Defines the key for the verticalAlign style. Possible values are
@@ -355,7 +355,7 @@ namespace com.mxgraph
         /// relative to the vertex, to move the label bounds vertically, use
         /// <i>STYLE_VERTICAL_LABEL_POSITION</i>.
         /// </summary>
-	    public static string STYLE_VERTICAL_ALIGN = "verticalAlign";
+        public static string STYLE_VERTICAL_ALIGN = "verticalAlign";
 
         /// <summary>
         /// Defines the key for the horizontal label position of vertices. Possible
@@ -370,10 +370,10 @@ namespace com.mxgraph
         /// to move the label horizontally within the label bounds, use
         /// <i>STYLE_ALIGN</i>.
         /// </summary>
-		public static String STYLE_LABEL_POSITION = "labelPosition";
+        public static String STYLE_LABEL_POSITION = "labelPosition";
 
-	    /// <summary>
-	    /// Defines the key for the vertical label position of vertices. Possible
+        /// <summary>
+        /// Defines the key for the vertical label position of vertices. Possible
         /// values are <i>ALIGN_TOP</i>, <i>ALIGN_BOTTOM</i> and
         /// <i>ALIGN_MIDDLE</i>. Default is <i>ALIGN_MIDDLE</i>. The
         /// label align defines the position of the label relative to the cell.
@@ -385,7 +385,7 @@ namespace com.mxgraph
         /// bounds, to move the label vertically within the label bounds, use
         /// <i>STYLE_VERTICAL_ALIGN</i>.
         /// </summary>
-		public static String STYLE_VERTICAL_LABEL_POSITION = "verticalLabelPosition";
+        public static String STYLE_VERTICAL_LABEL_POSITION = "verticalLabelPosition";
 
         /// <summary>
         /// Defines the key for the align style. Possible values are
@@ -421,33 +421,33 @@ namespace com.mxgraph
         /// how the image URL is resolved. Finally, mxUtils.loadImage is used for
         /// loading the image for a given URL.
         /// </summary>
-	    public static string STYLE_IMAGE = "image";
+        public static string STYLE_IMAGE = "image";
 
         /// <summary>
         /// Defines the key for the imageWidth style. The type of this value is
         /// <i>int</i>, the value is the image width in pixels and must be
         /// greated than 0.
         /// </summary>
-	    public static string STYLE_IMAGE_WIDTH = "imageWidth";
+        public static string STYLE_IMAGE_WIDTH = "imageWidth";
 
         /// <summary>
         /// Defines the key for the imageHeight style The type of this value is
         /// <i>int</i>, the value is the image height in pixels and must be
         /// greater than 0.
         /// </summary>
-	    public static string STYLE_IMAGE_HEIGHT = "imageHeight";
+        public static string STYLE_IMAGE_HEIGHT = "imageHeight";
 
-		/// <summary>
-		/// Defines the key for the image background color. This style is only used
+        /// <summary>
+        /// Defines the key for the image background color. This style is only used
         /// for image shapes. Possible values are all HTML color names or HEX codes.
-		/// </summary>
-		public static string STYLE_IMAGE_BACKGROUND = "imageBackground";
+        /// </summary>
+        public static string STYLE_IMAGE_BACKGROUND = "imageBackground";
 
-		/// <summary>
-		/// Defines the key for the image border color. This style is only used for
+        /// <summary>
+        /// Defines the key for the image border color. This style is only used for
         /// image shapes. Possible values are all HTML color names or HEX codes.
-		/// </summary>
-		public static string STYLE_IMAGE_BORDER = "imageBorder";
+        /// </summary>
+        public static string STYLE_IMAGE_BORDER = "imageBorder";
 
         /// <summary>
         /// Defines the key for the horizontal image flip. This style is only used
@@ -505,49 +505,49 @@ namespace com.mxgraph
         /// Possible values are any of the SHAPE_*
         /// constants.
         /// </summary>
-	    public static string STYLE_INDICATOR_SHAPE = "indicatorShape";
+        public static string STYLE_INDICATOR_SHAPE = "indicatorShape";
 
         /// <summary>
         /// Defines the key for the indicatorImage style.
         /// Possible values are any image URL, the type of the value is
         /// <i>String</i>.
         /// </summary>
-	    public static string STYLE_INDICATOR_IMAGE = "indicatorImage";
+        public static string STYLE_INDICATOR_IMAGE = "indicatorImage";
 
         /// <summary>
         /// Defines the key for the indicatorColor style. The value is a string
         /// expression supported by ColorTranslator.FromHtml.
         /// </summary>
-	    public static string STYLE_INDICATOR_COLOR = "indicatorColor";
+        public static string STYLE_INDICATOR_COLOR = "indicatorColor";
 
         /// <summary>
         /// Defines the key for the indicatorGradientColor style. The value is a
         /// string expression supported byColorTranslator.FromHtml. This style is
         /// only supported in SHAPE_LABEL shapes.
         /// </summary>
-	    public static string STYLE_INDICATOR_GRADIENTCOLOR = "indicatorGradientColor";
+        public static string STYLE_INDICATOR_GRADIENTCOLOR = "indicatorGradientColor";
 
         /// <summary>
         /// Defines the key for the indicatorSpacing style (in px).
         /// </summary>
-	    public static string STYLE_INDICATOR_SPACING = "indicatorSpacing";
+        public static string STYLE_INDICATOR_SPACING = "indicatorSpacing";
 
         /// <summary>
         /// Defines the key for the indicatorWidth style (in px).
         /// </summary>
-	    public static string STYLE_INDICATOR_WIDTH = "indicatorWidth";
+        public static string STYLE_INDICATOR_WIDTH = "indicatorWidth";
 
         /// <summary>
         /// Defines the key for the indicatorHeight style (in px).
         /// </summary>
-	    public static string STYLE_INDICATOR_HEIGHT = "indicatorHeight";
+        public static string STYLE_INDICATOR_HEIGHT = "indicatorHeight";
 
         /// <summary>
         /// Defines the key for the shadow style. The type of the value is
         /// <i>boolean</i>. This style applies to vertices and arrow style
         /// edges.
         /// </summary>
-	    public static string STYLE_SHADOW = "shadow";
+        public static string STYLE_SHADOW = "shadow";
 
         /// <summary>
         /// Defines the key for the segment style. The type of this value is
@@ -562,7 +562,7 @@ namespace com.mxgraph
         /// class that start with ARROW_. This style is
         /// supported in the mxConnector shape.
         /// </summary>
-	    public static string STYLE_ENDARROW = "endArrow";
+        public static string STYLE_ENDARROW = "endArrow";
 
         /// <summary>
         /// Defines the key for the startArrow style.
@@ -571,14 +571,14 @@ namespace com.mxgraph
         /// See STYLE_ENDARROW.
         /// This style is supported in the mxConnector shape.
         /// </summary>
-	    public static string STYLE_STARTARROW = "startArrow";
+        public static string STYLE_STARTARROW = "startArrow";
 
         /// <summary>
         /// Defines the key for the endSize style. The type of this value is
         /// <i>float</i> and the value represents the size of the end
         /// marker in pixels.
         /// </summary>
-	    public static string STYLE_ENDSIZE = "endSize";
+        public static string STYLE_ENDSIZE = "endSize";
 
         /// <summary>
         /// Defines the key for the startSize style. The type of this value is
@@ -586,14 +586,14 @@ namespace com.mxgraph
         /// or the size of the swimlane title region depending on the shape it is
         /// used for.
         /// </summary>
-	    public static string STYLE_STARTSIZE = "startSize";
+        public static string STYLE_STARTSIZE = "startSize";
 
         /// <summary>
         /// Defines the key for the dashed style. The type of this value is
         /// <i>boolean</i> and the value determines whether or not an edge or
         /// border is drawn with a dashed pattern along the line.
         /// </summary>
-	    public static string STYLE_DASHED = "dashed";
+        public static string STYLE_DASHED = "dashed";
 
         /// <summary>
         /// Defines the key for the rounded style. The type of this value is
@@ -602,7 +602,7 @@ namespace com.mxgraph
         /// that have the rectangle shape, this determines whether or not the
         /// rectangle is rounded.
         /// </summary>
-	    public static string STYLE_ROUNDED = "rounded";
+        public static string STYLE_ROUNDED = "rounded";
 
         /// <summary>
         /// Defines the key for the source perimeter spacing. The type of this value
@@ -628,21 +628,21 @@ namespace com.mxgraph
         /// this spacing applies to the source and target separately, if they
         /// terminate in floating ports (on the perimeter of the vertex).
         /// </summary>
-	    public static string STYLE_PERIMETER_SPACING = "perimeterSpacing";
+        public static string STYLE_PERIMETER_SPACING = "perimeterSpacing";
 
         /// <summary>
         /// Defines the key for the spacing. The value represents the spacing, in
         /// pixels, added to each side of a label in a vertex (style applies to
         /// vertices only).
         /// </summary>
-	    public static string STYLE_SPACING = "spacing";
+        public static string STYLE_SPACING = "spacing";
 
         /// <summary>
         /// Defines the key for the spacingTop style. The value represents the
         /// spacing, in pixels, added to the top side of a label in a vertex (style
         /// applies to vertices only).
         /// </summary>
-	    public static string STYLE_SPACING_TOP = "spacingTop";
+        public static string STYLE_SPACING_TOP = "spacingTop";
 
         /// <summary>
         /// Defines the key for the spacingLeft style. The value represents the
@@ -674,7 +674,7 @@ namespace com.mxgraph
         /// shape style does not indicate that this vertex is a swimlane, this value
         /// affects only whether the label is drawn horizontally or vertically.
         /// </summary>
-	    public static string STYLE_HORIZONTAL = "horizontal";
+        public static string STYLE_HORIZONTAL = "horizontal";
 
         /// <summary>
         /// Defines the key for the direction style. The direction style is used to
@@ -699,40 +699,40 @@ namespace com.mxgraph
         /// <i>String</i> and of the expression supported by
         /// ColorTranslator.FromHtml.
         /// </summary>
-	    public static string STYLE_FONTCOLOR = "fontColor";
+        public static string STYLE_FONTCOLOR = "fontColor";
 
         /// <summary>
         /// Defines the key for the fontFamily style. Possible values are names such
         /// as Arial; Dialog; Verdana; Times New Roman. The value is of type
         /// <i>String</i>.
         /// </summary>
-	    public static string STYLE_FONTFAMILY = "fontFamily";
+        public static string STYLE_FONTFAMILY = "fontFamily";
 
         /// <summary>
         /// Defines the key for the fontSize style (in px). The type of the value
         /// is <i>int</i>.
         /// </summary>
-	    public static string STYLE_FONTSIZE = "fontSize";
+        public static string STYLE_FONTSIZE = "fontSize";
 
         /// <summary>
         /// Defines the key for the fontStyle style. Values may be any logical AND
         /// (sum) of FONT_BOLD, FONT_ITALIC and FONT_UNDERLINE. The type
         /// of the value is <i>int</i>.
         /// </summary>
-	    public static string STYLE_FONTSTYLE = "fontStyle";
+        public static string STYLE_FONTSTYLE = "fontStyle";
 
         /// <summary>
         /// Defines the key for the shape style.
         /// Possible values are any of the SHAPE_*
         /// constants.
         /// </summary>
-	    public static string STYLE_SHAPE = "shape";
+        public static string STYLE_SHAPE = "shape";
 
         /// <summary>
         /// Takes a function that creates points. Possible values are the
         /// functions defined in mxEdgeStyle.
         /// </summary>
-	    public static string STYLE_EDGE = "edgeStyle";
+        public static string STYLE_EDGE = "edgeStyle";
 
         /// <summary>
         /// Defines the key for the loop style. Possible values are the
@@ -798,32 +798,32 @@ namespace com.mxgraph
         /// SHAPE_IMAGE
         /// </summary>
         public const string SHAPE_IMAGE = "image";
-    	
+
         /// <summary>
         /// SHAPE_ARROW
         /// </summary>
         public const string SHAPE_ARROW = "arrow";
-    	
+
         /// <summary>
         /// SHAPE_LABEL
         /// </summary>
         public const string SHAPE_LABEL = "label";
-    	
+
         /// <summary>
         /// SHAPE_CYLINDER
         /// </summary>
         public const string SHAPE_CYLINDER = "cylinder";
-    	
+
         /// <summary>
         /// SHAPE_SWIMLANE
         /// </summary>
         public const string SHAPE_SWIMLANE = "swimlane";
-    		
+
         /// <summary>
         /// SHAPE_CONNECTOR
         /// </summary>
         public const string SHAPE_CONNECTOR = "connector";
-    		
+
         /// <summary>
         /// SHAPE_ACTOR
         /// </summary>
@@ -897,26 +897,26 @@ namespace com.mxgraph
         /// <summary>
         /// ALIGN_BOTTOM
         /// </summary>
-	    public const string ALIGN_BOTTOM = "bottom";
+        public const string ALIGN_BOTTOM = "bottom";
 
-	    /// <summary>
+        /// <summary>
         /// DIRECTION_NORTH
-	    /// </summary>
-	    public const string DIRECTION_NORTH = "north";
+        /// </summary>
+        public const string DIRECTION_NORTH = "north";
 
-	    /// <summary>
+        /// <summary>
         /// DIRECTION_SOUTH
-	    /// </summary>
-	    public const string DIRECTION_SOUTH = "south";
+        /// </summary>
+        public const string DIRECTION_SOUTH = "south";
 
-	    /// <summary>
+        /// <summary>
         /// DIRECTION_EAST
-	    /// </summary>
-	    public const string DIRECTION_EAST = "east";
+        /// </summary>
+        public const string DIRECTION_EAST = "east";
 
-	    /// <summary>
+        /// <summary>
         /// DIRECTION_WEST
-	    /// </summary>
+        /// </summary>
         public const string DIRECTION_WEST = "west";
 
         /// <summary>
@@ -929,58 +929,58 @@ namespace com.mxgraph
         /// </summary>
         public const string ELBOW_HORIZONTAL = "horizontal";
 
-	    /// <summary>
-	    /// Name of the elbow edge style. Can be used as a string value
+        /// <summary>
+        /// Name of the elbow edge style. Can be used as a string value
         /// for the STYLE_EDGE style.
-	    /// </summary>
-	    public const string EDGESTYLE_ELBOW = "elbowEdgeStyle";
+        /// </summary>
+        public const string EDGESTYLE_ELBOW = "elbowEdgeStyle";
 
-	    /// <summary>
-	    /// Name of the entity relation edge style. Can be used as a string value
+        /// <summary>
+        /// Name of the entity relation edge style. Can be used as a string value
         /// for the STYLE_EDGE style.
-	    /// </summary>
-	    public const string EDGESTYLE_ENTITY_RELATION = "entityRelationEdgeStyle";
+        /// </summary>
+        public const string EDGESTYLE_ENTITY_RELATION = "entityRelationEdgeStyle";
 
-	    /// <summary>
-	    /// Name of the loop edge style. Can be used as a string value
+        /// <summary>
+        /// Name of the loop edge style. Can be used as a string value
         /// for the STYLE_EDGE style.
-	    /// </summary>
-	    public const string EDGESTYLE_LOOP = "loopEdgeStyle";
+        /// </summary>
+        public const string EDGESTYLE_LOOP = "loopEdgeStyle";
 
-	    /// <summary>
-	    /// Name of the side to side edge style. Can be used as a string value
+        /// <summary>
+        /// Name of the side to side edge style. Can be used as a string value
         /// for the STYLE_EDGE style.
-	    /// </summary>
-	    public const string EDGESTYLE_SIDETOSIDE = "sideToSideEdgeStyle";
+        /// </summary>
+        public const string EDGESTYLE_SIDETOSIDE = "sideToSideEdgeStyle";
 
-	    /// <summary>
-	    /// Name of the top to bottom edge style. Can be used as a string value
+        /// <summary>
+        /// Name of the top to bottom edge style. Can be used as a string value
         /// for the STYLE_EDGE style.
-	    /// </summary>
-	    public const string EDGESTYLE_TOPTOBOTTOM = "topToBottomEdgeStyle";
+        /// </summary>
+        public const string EDGESTYLE_TOPTOBOTTOM = "topToBottomEdgeStyle";
 
-	    /// <summary>
-	    /// Name of the ellipse perimeter. Can be used as a string value
+        /// <summary>
+        /// Name of the ellipse perimeter. Can be used as a string value
         /// for the STYLE_PERIMETER style.
-	    /// </summary>
-	    public const string PERIMETER_ELLIPSE = "ellipsePerimeter";
+        /// </summary>
+        public const string PERIMETER_ELLIPSE = "ellipsePerimeter";
 
-	    /// <summary>
-	    /// Name of the rectangle perimeter. Can be used as a string value
+        /// <summary>
+        /// Name of the rectangle perimeter. Can be used as a string value
         /// for the STYLE_PERIMETER style.
-	    /// </summary>
-	    public const string PERIMETER_RECTANGLE = "rectanglePerimeter";
+        /// </summary>
+        public const string PERIMETER_RECTANGLE = "rectanglePerimeter";
 
-	    /// <summary>
-	    /// Name of the rhombus perimeter. Can be used as a string value
+        /// <summary>
+        /// Name of the rhombus perimeter. Can be used as a string value
         /// for the STYLE_PERIMETER style.
-	    /// </summary>
-	    public const string PERIMETER_RHOMBUS = "rhombusPerimeter";
+        /// </summary>
+        public const string PERIMETER_RHOMBUS = "rhombusPerimeter";
 
-	    /// <summary>
-	    /// Name of the triangle perimeter. Can be used as a string value
+        /// <summary>
+        /// Name of the triangle perimeter. Can be used as a string value
         /// for the STYLE_PERIMETER style.
-	    /// </summary>
+        /// </summary>
         public const string PERIMETER_TRIANGLE = "trianglePerimeter";
 
     }

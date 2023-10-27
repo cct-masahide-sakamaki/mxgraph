@@ -1,12 +1,12 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.IO;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Text;
 
 namespace com.mxgraph
 {
@@ -34,7 +34,7 @@ namespace com.mxgraph
         /// <summary>
         /// Constructs a new GDI canvas.
         /// </summary>
-        public mxGdiCanvas(): this(null) {}
+        public mxGdiCanvas() : this(null) { }
 
         /// <summary>
         /// Constructs a new GDI canvas for the given graphics instance.
@@ -264,7 +264,7 @@ namespace com.mxgraph
             // Prepares the foreground
             if (penColor != null && penWidth > 0)
             {
-                pen = new Pen((Color)penColor, (float) (penWidth * scale));
+                pen = new Pen((Color)penColor, (float)(penWidth * scale));
 
                 if (mxUtils.IsTrue(style, mxConstants.STYLE_DASHED, false))
                 {
@@ -274,158 +274,158 @@ namespace com.mxgraph
 
             switch (shape)
             {
-                 case (mxConstants.SHAPE_ELLIPSE):
-                {
-                    DrawOval(x, y, w, h, brush, pen, shadow);
-                    break;
-                }
+                case (mxConstants.SHAPE_ELLIPSE):
+                    {
+                        DrawOval(x, y, w, h, brush, pen, shadow);
+                        break;
+                    }
                 case (mxConstants.SHAPE_LINE):
-                {
-                    string direction = mxUtils
-                            .GetString(style, mxConstants.STYLE_DIRECTION,
-                                    mxConstants.DIRECTION_EAST);
-
-                    if (direction.Equals(mxConstants.DIRECTION_EAST)
-                            || direction.Equals(mxConstants.DIRECTION_WEST))
                     {
-                        int mid = (int)(y + h / 2);
-                        g.DrawLine(pen, x, mid, x + w, mid);
-                    }
-                    else
-                    {
-                        int mid = (int)(x + w / 2);
-                        g.DrawLine(pen, mid, y, mid, y + h);
-                    }
+                        string direction = mxUtils
+                                .GetString(style, mxConstants.STYLE_DIRECTION,
+                                        mxConstants.DIRECTION_EAST);
 
-                    break;
-                }
+                        if (direction.Equals(mxConstants.DIRECTION_EAST)
+                                || direction.Equals(mxConstants.DIRECTION_WEST))
+                        {
+                            int mid = (int)(y + h / 2);
+                            g.DrawLine(pen, x, mid, x + w, mid);
+                        }
+                        else
+                        {
+                            int mid = (int)(x + w / 2);
+                            g.DrawLine(pen, mid, y, mid, y + h);
+                        }
+
+                        break;
+                    }
                 case (mxConstants.SHAPE_DOUBLE_ELLIPSE):
-                {
-                    DrawOval(x, y, w, h, brush, pen, shadow);
+                    {
+                        DrawOval(x, y, w, h, brush, pen, shadow);
 
-                    int inset = (int)(3 + penWidth * scale);
-                    x += inset;
-                    y += inset;
-                    w -= 2 * inset;
-                    h -= 2 * inset;
-                    DrawOval(x, y, w, h, null, pen, false);
-                    break;
-                }
+                        int inset = (int)(3 + penWidth * scale);
+                        x += inset;
+                        y += inset;
+                        w -= 2 * inset;
+                        h -= 2 * inset;
+                        DrawOval(x, y, w, h, null, pen, false);
+                        break;
+                    }
                 case (mxConstants.SHAPE_RHOMBUS):
-                {
-                    DrawRhombus(x, y, w, h, brush, pen, shadow);
-                    break;
-                }
+                    {
+                        DrawRhombus(x, y, w, h, brush, pen, shadow);
+                        break;
+                    }
                 case (mxConstants.SHAPE_CYLINDER):
-                {
-                    DrawCylinder(x, y, w, h, brush, pen, shadow);
-                    break;
-                }
+                    {
+                        DrawCylinder(x, y, w, h, brush, pen, shadow);
+                        break;
+                    }
                 case (mxConstants.SHAPE_ACTOR):
-                {
-                    DrawActor(x, y, w, h, brush, pen, shadow);
-                    break;
-                }
+                    {
+                        DrawActor(x, y, w, h, brush, pen, shadow);
+                        break;
+                    }
                 case (mxConstants.SHAPE_CLOUD):
-                {
-                    DrawCloud(x, y, w, h, brush, pen, shadow);
-                    break;
-                }
+                    {
+                        DrawCloud(x, y, w, h, brush, pen, shadow);
+                        break;
+                    }
                 case (mxConstants.SHAPE_TRIANGLE):
-                {
-                    string direction = mxUtils.GetString(style, mxConstants.STYLE_DIRECTION, "");
-                    DrawTriangle(x, y, w, h, brush, pen, shadow, direction);
-                    break;
-                }
+                    {
+                        string direction = mxUtils.GetString(style, mxConstants.STYLE_DIRECTION, "");
+                        DrawTriangle(x, y, w, h, brush, pen, shadow, direction);
+                        break;
+                    }
                 case (mxConstants.SHAPE_HEXAGON):
-                {
-                    string direction = mxUtils.GetString(style, mxConstants.STYLE_DIRECTION, "");
-                    DrawHexagon(x, y, w, h, brush, pen, shadow, direction);
-                    break;
-                }
+                    {
+                        string direction = mxUtils.GetString(style, mxConstants.STYLE_DIRECTION, "");
+                        DrawHexagon(x, y, w, h, brush, pen, shadow, direction);
+                        break;
+                    }
                 default:
-                {
-                    bool rounded = mxUtils.IsTrue(style, mxConstants.STYLE_ROUNDED);
-                    DrawRect(x, y, w, h, brush, pen, shadow, rounded);
-
-                    bool flipH = mxUtils.IsTrue(style, mxConstants.STYLE_IMAGE_FLIPH, false);
-                    bool flipV = mxUtils.IsTrue(style, mxConstants.STYLE_IMAGE_FLIPV, false);
-
-                    // Draws the image as a shape
-                    if (image)
                     {
-                        string img = GetImageForStyle(style);
+                        bool rounded = mxUtils.IsTrue(style, mxConstants.STYLE_ROUNDED);
+                        DrawRect(x, y, w, h, brush, pen, shadow, rounded);
 
-                        if (img != null)
+                        bool flipH = mxUtils.IsTrue(style, mxConstants.STYLE_IMAGE_FLIPH, false);
+                        bool flipV = mxUtils.IsTrue(style, mxConstants.STYLE_IMAGE_FLIPV, false);
+
+                        // Draws the image as a shape
+                        if (image)
                         {
-                            DrawImage(x, y, w, h, img, PRESERVE_IMAGE_ASPECT, flipH, flipV);
+                            string img = GetImageForStyle(style);
+
+                            if (img != null)
+                            {
+                                DrawImage(x, y, w, h, img, PRESERVE_IMAGE_ASPECT, flipH, flipV);
+                            }
                         }
+
+                        // Draws the image of the label inside the label shape
+                        if (shape.Equals(mxConstants.SHAPE_LABEL))
+                        {
+                            string img = GetImageForStyle(style);
+
+                            if (img != null)
+                            {
+                                string imgAlign = mxUtils.GetString(style,
+                                        mxConstants.STYLE_IMAGE_ALIGN,
+                                        mxConstants.ALIGN_LEFT);
+                                string imgValign = mxUtils.GetString(style,
+                                        mxConstants.STYLE_IMAGE_VERTICAL_ALIGN,
+                                        mxConstants.ALIGN_MIDDLE);
+                                int imgWidth = (int)(mxUtils.GetInt(style,
+                                        mxConstants.STYLE_IMAGE_WIDTH,
+                                        mxConstants.DEFAULT_IMAGESIZE) * scale);
+                                int imgHeight = (int)(mxUtils.GetInt(style,
+                                        mxConstants.STYLE_IMAGE_HEIGHT,
+                                        mxConstants.DEFAULT_IMAGESIZE) * scale);
+                                int spacing = (int)(mxUtils.GetInt(style,
+                                        mxConstants.STYLE_SPACING, 2) * scale);
+
+                                int imgX = x;
+
+                                if (imgAlign.Equals(mxConstants.ALIGN_CENTER))
+                                {
+                                    imgX += (w - imgWidth) / 2;
+                                }
+                                else if (imgAlign.Equals(mxConstants.ALIGN_RIGHT))
+                                {
+                                    imgX += w - imgWidth - spacing;
+                                }
+                                else // LEFT
+                                {
+                                    imgX += spacing;
+                                }
+
+                                int imgY = y;
+
+                                if (imgValign.Equals(mxConstants.ALIGN_TOP))
+                                {
+                                    imgY += spacing;
+                                }
+                                else if (imgValign.Equals(mxConstants.ALIGN_BOTTOM))
+                                {
+                                    imgY += h - imgHeight - spacing;
+                                }
+                                else // MIDDLE
+                                {
+                                    imgY += (h - imgHeight) / 2;
+                                }
+
+                                DrawImage(imgX, imgY, imgWidth, imgHeight, img);
+                            }
+
+                            // Paints the glass effect for labels
+                            if (mxUtils.IsTrue(style, mxConstants.STYLE_GLASS, false))
+                            {
+                                DrawGlassEffect(x, y, w, h, style);
+                            }
+                        }
+
+                        break;
                     }
-
-                    // Draws the image of the label inside the label shape
-                    if (shape.Equals(mxConstants.SHAPE_LABEL))
-                    {
-                        string img = GetImageForStyle(style);
-
-                        if (img != null)
-                        {
-                            string imgAlign = mxUtils.GetString(style,
-                                    mxConstants.STYLE_IMAGE_ALIGN,
-                                    mxConstants.ALIGN_LEFT);
-                            string imgValign = mxUtils.GetString(style,
-                                    mxConstants.STYLE_IMAGE_VERTICAL_ALIGN,
-                                    mxConstants.ALIGN_MIDDLE);
-                            int imgWidth = (int)(mxUtils.GetInt(style,
-                                    mxConstants.STYLE_IMAGE_WIDTH,
-                                    mxConstants.DEFAULT_IMAGESIZE) * scale);
-                            int imgHeight = (int)(mxUtils.GetInt(style,
-                                    mxConstants.STYLE_IMAGE_HEIGHT,
-                                    mxConstants.DEFAULT_IMAGESIZE) * scale);
-                            int spacing = (int)(mxUtils.GetInt(style,
-                                    mxConstants.STYLE_SPACING, 2) * scale);
-
-                            int imgX = x;
-
-                            if (imgAlign.Equals(mxConstants.ALIGN_CENTER))
-                            {
-                                imgX += (w - imgWidth) / 2;
-                            }
-                            else if (imgAlign.Equals(mxConstants.ALIGN_RIGHT))
-                            {
-                                imgX += w - imgWidth - spacing;
-                            }
-                            else // LEFT
-                            {
-                                imgX += spacing;
-                            }
-
-                            int imgY = y;
-
-                            if (imgValign.Equals(mxConstants.ALIGN_TOP))
-                            {
-                                imgY += spacing;
-                            }
-                            else if (imgValign.Equals(mxConstants.ALIGN_BOTTOM))
-                            {
-                                imgY += h - imgHeight - spacing;
-                            }
-                            else // MIDDLE
-                            {
-                                imgY += (h - imgHeight) / 2;
-                            }
-
-                            DrawImage(imgX, imgY, imgWidth, imgHeight, img);
-                        }
-
-                        // Paints the glass effect for labels
-                        if (mxUtils.IsTrue(style, mxConstants.STYLE_GLASS, false))
-                        {
-                            DrawGlassEffect(x, y, w, h, style);
-                        }
-                    }
-
-                    break;
-                }
             }
         }
 
@@ -437,7 +437,7 @@ namespace com.mxgraph
         {
             double size = 0.4;
             int sw = (int)Math.Ceiling(mxUtils.GetFloat(style,
-                mxConstants.STYLE_STROKEWIDTH, 1) * scale / 2); 
+                mxConstants.STYLE_STROKEWIDTH, 1) * scale / 2);
 
             Rectangle area = new Rectangle(x - sw - 1,
                 y - sw - 1, w + 2 * sw + 1, (int)(h * 0.9));
@@ -445,7 +445,7 @@ namespace com.mxgraph
                 Color.FromArgb(0, 255, 255, 255), LinearGradientMode.Vertical);
 
             GraphicsPath path = new GraphicsPath();
-            
+
             path.AddLine(x - sw, y - sw,
                 x - sw, (int)Math.Ceiling(y + h * size));
             // FIXME: Use quadratic curve here via x + w / 2, y + h * 0.7
@@ -565,7 +565,7 @@ namespace com.mxgraph
                 }
             }
         }
-        
+
         /// <summary>
         /// Draws an image for the given parameters.
         /// </summary>
@@ -607,7 +607,7 @@ namespace com.mxgraph
 
                 if (flipH || flipV)
                 {
-                    img = (Image) img.Clone();
+                    img = (Image)img.Clone();
                 }
 
                 if (flipH && flipV)
@@ -931,101 +931,101 @@ namespace com.mxgraph
                 switch (shape)
                 {
                     case (mxConstants.SHAPE_ARROW):
-                    {
-                        // Base vector (between end points)
-                        mxPoint p0 = pts[0];
-                        mxPoint pe = pts[pts.Count - 1];
-
-                        int x = (int) Math.Min(p0.X, pe.X);
-                        int y = (int) Math.Min(p0.Y, pe.Y);
-                        int x1 = (int) Math.Max(p0.X, pe.X);
-                        int y1 = (int) Math.Max(p0.Y, pe.Y);
-                        int w = x1 - x;
-                        int h = y1 - y;
-
-                        Rectangle bounds = new Rectangle(x, y, w, h);
-                        
-                        bool shadow = mxUtils.IsTrue(style, mxConstants.STYLE_SHADOW, false);
-                        Color? fillColor = mxUtils.GetColor(style, mxConstants.STYLE_FILLCOLOR);
-                        float opacity = mxUtils.GetFloat(style, mxConstants.STYLE_OPACITY, 100);
-                        int alpha = (int)(255 * opacity / 100);
-                        Brush brush = null;
-
-                        if (fillColor != null)
                         {
-                            Color fill = (Color)fillColor;
+                            // Base vector (between end points)
+                            mxPoint p0 = pts[0];
+                            mxPoint pe = pts[pts.Count - 1];
 
-                            if (opacity != 100)
+                            int x = (int)Math.Min(p0.X, pe.X);
+                            int y = (int)Math.Min(p0.Y, pe.Y);
+                            int x1 = (int)Math.Max(p0.X, pe.X);
+                            int y1 = (int)Math.Max(p0.Y, pe.Y);
+                            int w = x1 - x;
+                            int h = y1 - y;
+
+                            Rectangle bounds = new Rectangle(x, y, w, h);
+
+                            bool shadow = mxUtils.IsTrue(style, mxConstants.STYLE_SHADOW, false);
+                            Color? fillColor = mxUtils.GetColor(style, mxConstants.STYLE_FILLCOLOR);
+                            float opacity = mxUtils.GetFloat(style, mxConstants.STYLE_OPACITY, 100);
+                            int alpha = (int)(255 * opacity / 100);
+                            Brush brush = null;
+
+                            if (fillColor != null)
                             {
-                                fill = Color.FromArgb(alpha, fill.R, fill.G, fill.B);
-                            }
+                                Color fill = (Color)fillColor;
 
-                            Color? gradientColor = mxUtils.GetColor(style, mxConstants.STYLE_GRADIENTCOLOR);
-
-                            if (gradientColor != null)
-                            {
-                                String gradientDirection = mxUtils.GetString(style,
-                                        mxConstants.STYLE_GRADIENT_DIRECTION);
-                                LinearGradientMode mode = LinearGradientMode.ForwardDiagonal;
-
-                                if (gradientDirection != null
-                                        && !gradientDirection
-                                                .Equals(mxConstants.DIRECTION_SOUTH))
+                                if (opacity != 100)
                                 {
-                                    if (gradientDirection.Equals(mxConstants.DIRECTION_EAST))
-                                    {
-                                        mode = LinearGradientMode.BackwardDiagonal;
-                                    }
-                                    else if (gradientDirection.Equals(mxConstants.DIRECTION_NORTH))
-                                    {
-                                        mode = LinearGradientMode.Horizontal;
-                                    }
-                                    else if (gradientDirection.Equals(mxConstants.DIRECTION_WEST))
-                                    {
-                                        mode = LinearGradientMode.Vertical;
-                                    }
+                                    fill = Color.FromArgb(alpha, fill.R, fill.G, fill.B);
                                 }
 
-                                brush = new LinearGradientBrush(bounds, fill, (Color)gradientColor, mode);
+                                Color? gradientColor = mxUtils.GetColor(style, mxConstants.STYLE_GRADIENTCOLOR);
+
+                                if (gradientColor != null)
+                                {
+                                    String gradientDirection = mxUtils.GetString(style,
+                                            mxConstants.STYLE_GRADIENT_DIRECTION);
+                                    LinearGradientMode mode = LinearGradientMode.ForwardDiagonal;
+
+                                    if (gradientDirection != null
+                                            && !gradientDirection
+                                                    .Equals(mxConstants.DIRECTION_SOUTH))
+                                    {
+                                        if (gradientDirection.Equals(mxConstants.DIRECTION_EAST))
+                                        {
+                                            mode = LinearGradientMode.BackwardDiagonal;
+                                        }
+                                        else if (gradientDirection.Equals(mxConstants.DIRECTION_NORTH))
+                                        {
+                                            mode = LinearGradientMode.Horizontal;
+                                        }
+                                        else if (gradientDirection.Equals(mxConstants.DIRECTION_WEST))
+                                        {
+                                            mode = LinearGradientMode.Vertical;
+                                        }
+                                    }
+
+                                    brush = new LinearGradientBrush(bounds, fill, (Color)gradientColor, mode);
+                                }
+                                else
+                                {
+                                    brush = new SolidBrush(fill);
+                                }
                             }
-                            else
-                            {
-                                brush = new SolidBrush(fill);
-                            }
-                        }
 
-                        // Geometry of arrow
-                        double spacing = mxConstants.ARROW_SPACING * scale;
-                        double width = mxConstants.ARROW_WIDTH * scale;
-                        double arrow = mxConstants.ARROW_SIZE * scale;
+                            // Geometry of arrow
+                            double spacing = mxConstants.ARROW_SPACING * scale;
+                            double width = mxConstants.ARROW_WIDTH * scale;
+                            double arrow = mxConstants.ARROW_SIZE * scale;
 
-                        double dx = pe.X - p0.X;
-                        double dy = pe.Y - p0.Y;
-                        double dist = Math.Sqrt(dx * dx + dy * dy);
-                        double length = dist - 2 * spacing - arrow;
+                            double dx = pe.X - p0.X;
+                            double dy = pe.Y - p0.Y;
+                            double dist = Math.Sqrt(dx * dx + dy * dy);
+                            double length = dist - 2 * spacing - arrow;
 
-                        // Computes the norm and the inverse norm
-                        double nx = dx / dist;
-                        double ny = dy / dist;
-                        double basex = length * nx;
-                        double basey = length * ny;
-                        double floorx = width * ny / 3;
-                        double floory = -width * nx / 3;
+                            // Computes the norm and the inverse norm
+                            double nx = dx / dist;
+                            double ny = dy / dist;
+                            double basex = length * nx;
+                            double basey = length * ny;
+                            double floorx = width * ny / 3;
+                            double floory = -width * nx / 3;
 
-                        // Computes points
-                        double p0x = p0.X - floorx / 2 + spacing * nx;
-                        double p0y = p0.Y - floory / 2 + spacing * ny;
-                        double p1x = p0x + floorx;
-                        double p1y = p0y + floory;
-                        double p2x = p1x + basex;
-                        double p2y = p1y + basey;
-                        double p3x = p2x + floorx;
-                        double p3y = p2y + floory;
-                        // p4 not necessary
-                        double p5x = p3x - 3 * floorx;
-                        double p5y = p3y - 3 * floory;
+                            // Computes points
+                            double p0x = p0.X - floorx / 2 + spacing * nx;
+                            double p0y = p0.Y - floory / 2 + spacing * ny;
+                            double p1x = p0x + floorx;
+                            double p1y = p0y + floory;
+                            double p2x = p1x + basex;
+                            double p2y = p1y + basey;
+                            double p3x = p2x + floorx;
+                            double p3y = p2y + floory;
+                            // p4 not necessary
+                            double p5x = p3x - 3 * floorx;
+                            double p5y = p3y - 3 * floory;
 
-                        Point[] poly = new Point[]{
+                            Point[] poly = new Point[]{
                             new Point((int) p0x, (int) p0y),
                             new Point((int) p1x, (int) p1y),
                             new Point((int) p2x, (int) p2y),
@@ -1034,159 +1034,159 @@ namespace com.mxgraph
                                 .Y - spacing * ny)),
                             new Point((int) p5x, (int) p5y),
                             new Point((int) (p5x + floorx), (int) (p5y + floory))};
-                        DrawPolygon(poly, brush, pen, shadow);
+                            DrawPolygon(poly, brush, pen, shadow);
 
-                        break;
-                    }
+                            break;
+                        }
                     default:
-                    {
-                        // TODO: Move code into DrawConnector method
-
-                        // Draws the start marker
-                        Object marker = mxUtils.GetString(style, mxConstants.STYLE_STARTARROW);
-
-                        mxPoint p0 = pts[0];
-                        mxPoint pt = pts[1];
-                        mxPoint offset = null;
-                        int count = 1;
-
-                        // Uses next non-overlapping point
-                        while (count < pts.Count - 1 && Math.Round(p0.X - pt.X) == 0 && Math.Round(p0.Y - pt.Y) == 0)
                         {
-                            pt = pts[1 + count];
-                            count++;
-                        }
+                            // TODO: Move code into DrawConnector method
 
-                        if (marker != null)
-                        {
-                            float size = (float) (mxUtils.GetFloat(style, mxConstants.STYLE_STARTSIZE,
-                                mxConstants.DEFAULT_MARKERSIZE));
-                            offset = DrawMarker(marker, pt, p0, size, pen);
-                        }
-                        else
-                        {
-                            double dx = pt.X - p0.X;
-                            double dy = pt.Y - p0.Y;
+                            // Draws the start marker
+                            Object marker = mxUtils.GetString(style, mxConstants.STYLE_STARTARROW);
 
-                            double dist = Math.Max(1, Math.Sqrt(dx * dx + dy * dy));
-                            double nx = dx * penWidth * scale / dist;
-                            double ny = dy * penWidth * scale / dist;
+                            mxPoint p0 = pts[0];
+                            mxPoint pt = pts[1];
+                            mxPoint offset = null;
+                            int count = 1;
 
-                            offset = new mxPoint(nx / 2, ny / 2);
-                        }
-
-                        // Applies offset to point
-                        if (offset != null)
-                        {
-                            p0 = p0.Clone();
-                            p0.X += offset.X;
-                            p0.Y += offset.Y;
-
-                            offset = null;
-                        }
-
-                        // Draws the end marker
-                        marker = mxUtils.GetString(style, mxConstants.STYLE_ENDARROW);
-
-                        mxPoint pe = pts[pts.Count - 1];
-                        pt = pts[pts.Count - 2];
-                        count = 1;
-
-                        // Uses next non-overlapping point
-                        while (count < pts.Count - 1 && Math.Round(pe.X - pt.X) == 0 && Math.Round(pe.Y - pt.Y) == 0)
-                        {
-                            pt = pts[pts.Count - 2 - count];
-                            count++;
-                        }
-
-                        if (marker != null)
-                        {
-                            float size = (float) (mxUtils.GetFloat(style, mxConstants.STYLE_ENDSIZE,
-                                 mxConstants.DEFAULT_MARKERSIZE));
-                            offset = DrawMarker(marker, pt, pe, size, pen);
-                        }
-                        else
-                        {
-                            double dx = pt.X - p0.X;
-                            double dy = pt.Y - p0.Y;
-
-                            double dist = Math.Max(1, Math.Sqrt(dx * dx + dy * dy));
-                            double nx = dx * penWidth * scale / dist;
-                            double ny = dy * penWidth * scale / dist;
-
-                            offset = new mxPoint(nx / 2, ny / 2);
-                        }
-
-                        // Applies offset to the point
-                        if (offset != null)
-                        {
-                            pe = pe.Clone();
-                            pe.X += offset.X;
-                            pe.Y += offset.Y;
-
-                            offset = null;
-                        }
-
-                        // Draws the line using a GraphicsPath
-                        GraphicsPath path = new GraphicsPath();
-                        double arcSize = mxConstants.LINE_ARCSIZE * scale;
-                        pt = p0;
-
-                        for (int i = 1; i < pts.Count - 1; i++)
-                        {
-                            mxPoint tmp = pts[i];
-                            double dx = pt.X - tmp.X;
-                            double dy = pt.Y - tmp.Y;
-
-                            if ((rounded && i < pts.Count - 1) && (dx != 0 || dy != 0)
-                                    && scale > 0.3)
+                            // Uses next non-overlapping point
+                            while (count < pts.Count - 1 && Math.Round(p0.X - pt.X) == 0 && Math.Round(p0.Y - pt.Y) == 0)
                             {
-                                // Draws a line from the last point to the current point with a
-                                // spacing of size off the current point into direction of the
-                                // last point
-                                double dist = Math.Sqrt(dx * dx + dy * dy);
-                                double nx1 = dx * Math.Min(arcSize, dist / 2) / dist;
-                                double ny1 = dy * Math.Min(arcSize, dist / 2) / dist;
-                                path.AddLine((float)(pt.X), (float)(pt.Y),
-                                    (float)(tmp.X + nx1), (float)(tmp.Y + ny1));
+                                pt = pts[1 + count];
+                                count++;
+                            }
 
-                                // Draws a curve from the last point to the current
-                                // point with a spacing of size off the current point
-                                // into direction of the next point
-                                mxPoint next = pts[i + 1];
-
-                                // Uses next non-overlapping point
-                                while (i < pts.Count - 2 && Math.Round(next.X - tmp.X) == 0 && Math.Round(next.Y - tmp.Y) == 0)
-                                {
-                                    next = pts[i + 2];
-                                    i++;
-                                }
-
-                                dx = next.X - tmp.X;
-                                dy = next.Y - tmp.Y;
-                                dist = Math.Max(1, Math.Sqrt(dx * dx + dy * dy));
-                                double nx2 = dx * Math.Min(arcSize, dist / 2) / dist;
-                                double ny2 = dy * Math.Min(arcSize, dist / 2) / dist;
-                                path.AddBezier(
-                                    (float)(tmp.X + nx1), (float)(tmp.Y + ny1),
-                                    (float)(tmp.X), (float)(tmp.Y),
-                                    (float)(tmp.X), (float)(tmp.Y),
-                                    (float)(tmp.X + nx2), (float)(tmp.Y + ny2));
-                                tmp = new mxPoint(tmp.X + nx2, tmp.Y + ny2);
+                            if (marker != null)
+                            {
+                                float size = (float)(mxUtils.GetFloat(style, mxConstants.STYLE_STARTSIZE,
+                                    mxConstants.DEFAULT_MARKERSIZE));
+                                offset = DrawMarker(marker, pt, p0, size, pen);
                             }
                             else
                             {
-                                path.AddLine((float)(pt.X), (float)(pt.Y), (float)(tmp.X), (float)(tmp.Y));
+                                double dx = pt.X - p0.X;
+                                double dy = pt.Y - p0.Y;
+
+                                double dist = Math.Max(1, Math.Sqrt(dx * dx + dy * dy));
+                                double nx = dx * penWidth * scale / dist;
+                                double ny = dy * penWidth * scale / dist;
+
+                                offset = new mxPoint(nx / 2, ny / 2);
                             }
 
-                            pt = tmp;
+                            // Applies offset to point
+                            if (offset != null)
+                            {
+                                p0 = p0.Clone();
+                                p0.X += offset.X;
+                                p0.Y += offset.Y;
+
+                                offset = null;
+                            }
+
+                            // Draws the end marker
+                            marker = mxUtils.GetString(style, mxConstants.STYLE_ENDARROW);
+
+                            mxPoint pe = pts[pts.Count - 1];
+                            pt = pts[pts.Count - 2];
+                            count = 1;
+
+                            // Uses next non-overlapping point
+                            while (count < pts.Count - 1 && Math.Round(pe.X - pt.X) == 0 && Math.Round(pe.Y - pt.Y) == 0)
+                            {
+                                pt = pts[pts.Count - 2 - count];
+                                count++;
+                            }
+
+                            if (marker != null)
+                            {
+                                float size = (float)(mxUtils.GetFloat(style, mxConstants.STYLE_ENDSIZE,
+                                     mxConstants.DEFAULT_MARKERSIZE));
+                                offset = DrawMarker(marker, pt, pe, size, pen);
+                            }
+                            else
+                            {
+                                double dx = pt.X - p0.X;
+                                double dy = pt.Y - p0.Y;
+
+                                double dist = Math.Max(1, Math.Sqrt(dx * dx + dy * dy));
+                                double nx = dx * penWidth * scale / dist;
+                                double ny = dy * penWidth * scale / dist;
+
+                                offset = new mxPoint(nx / 2, ny / 2);
+                            }
+
+                            // Applies offset to the point
+                            if (offset != null)
+                            {
+                                pe = pe.Clone();
+                                pe.X += offset.X;
+                                pe.Y += offset.Y;
+
+                                offset = null;
+                            }
+
+                            // Draws the line using a GraphicsPath
+                            GraphicsPath path = new GraphicsPath();
+                            double arcSize = mxConstants.LINE_ARCSIZE * scale;
+                            pt = p0;
+
+                            for (int i = 1; i < pts.Count - 1; i++)
+                            {
+                                mxPoint tmp = pts[i];
+                                double dx = pt.X - tmp.X;
+                                double dy = pt.Y - tmp.Y;
+
+                                if ((rounded && i < pts.Count - 1) && (dx != 0 || dy != 0)
+                                        && scale > 0.3)
+                                {
+                                    // Draws a line from the last point to the current point with a
+                                    // spacing of size off the current point into direction of the
+                                    // last point
+                                    double dist = Math.Sqrt(dx * dx + dy * dy);
+                                    double nx1 = dx * Math.Min(arcSize, dist / 2) / dist;
+                                    double ny1 = dy * Math.Min(arcSize, dist / 2) / dist;
+                                    path.AddLine((float)(pt.X), (float)(pt.Y),
+                                        (float)(tmp.X + nx1), (float)(tmp.Y + ny1));
+
+                                    // Draws a curve from the last point to the current
+                                    // point with a spacing of size off the current point
+                                    // into direction of the next point
+                                    mxPoint next = pts[i + 1];
+
+                                    // Uses next non-overlapping point
+                                    while (i < pts.Count - 2 && Math.Round(next.X - tmp.X) == 0 && Math.Round(next.Y - tmp.Y) == 0)
+                                    {
+                                        next = pts[i + 2];
+                                        i++;
+                                    }
+
+                                    dx = next.X - tmp.X;
+                                    dy = next.Y - tmp.Y;
+                                    dist = Math.Max(1, Math.Sqrt(dx * dx + dy * dy));
+                                    double nx2 = dx * Math.Min(arcSize, dist / 2) / dist;
+                                    double ny2 = dy * Math.Min(arcSize, dist / 2) / dist;
+                                    path.AddBezier(
+                                        (float)(tmp.X + nx1), (float)(tmp.Y + ny1),
+                                        (float)(tmp.X), (float)(tmp.Y),
+                                        (float)(tmp.X), (float)(tmp.Y),
+                                        (float)(tmp.X + nx2), (float)(tmp.Y + ny2));
+                                    tmp = new mxPoint(tmp.X + nx2, tmp.Y + ny2);
+                                }
+                                else
+                                {
+                                    path.AddLine((float)(pt.X), (float)(pt.Y), (float)(tmp.X), (float)(tmp.Y));
+                                }
+
+                                pt = tmp;
+                            }
+
+                            path.AddLine((float)(pt.X), (float)(pt.Y), (float)(pe.X), (float)(pe.Y));
+                            g.DrawPath(pen, path);
+
+                            break;
                         }
-
-                        path.AddLine((float)(pt.X), (float)(pt.Y), (float)(pe.X), (float)(pe.Y));
-                        g.DrawPath(pen, path);
-
-                        break;
-                    }
                 }
             }
         }
@@ -1203,7 +1203,7 @@ namespace com.mxgraph
         public mxPoint DrawMarker(Object type, mxPoint p0, mxPoint pe, float size, Pen pen)
         {
             Brush brush = new SolidBrush(pen.Color);
-            float strokeWidth = (float) (pen.Width / scale);
+            float strokeWidth = (float)(pen.Width / scale);
             mxPoint offset = null;
 
             // Computes the norm and the inverse norm

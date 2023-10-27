@@ -426,59 +426,59 @@ namespace com.mxgraph
             }
         }
 
-	    /// <summary>
-	    /// Returns the specified attribute from the user object if it is an XML
+        /// <summary>
+        /// Returns the specified attribute from the user object if it is an XML
         /// node.
-	    /// </summary>
+        /// </summary>
         /// <param name="name">Name of the attribute whose value should be returned.</param>
         /// <returns>Returns the value of the given attribute or null.</returns>
-	    public String GetAttribute(String name)
-	    {
-		    return GetAttribute(name, null);
-	    }
-    	
-	    /// <summary>
-	    /// Returns the specified attribute from the user object if it is an XML
+        public String GetAttribute(String name)
+        {
+            return GetAttribute(name, null);
+        }
+
+        /// <summary>
+        /// Returns the specified attribute from the user object if it is an XML
         /// node.
-	    /// </summary>
+        /// </summary>
         /// <param name="name">Name of the attribute whose value should be returned.</param>
         /// <param name="defaultValue">Default value to use if the attribute has no value.</param>
         /// <returns>Returns the value of the given attribute or defaultValue.</returns>
-	    public String GetAttribute(String name, String defaultValue)
-	    {
+        public String GetAttribute(String name, String defaultValue)
+        {
             Object userObject = Value;
             String val = null;
 
             if (userObject is XmlElement)
-		    {
+            {
                 XmlElement element = (XmlElement)userObject;
                 val = element.GetAttribute(name);
-		    }
+            }
 
             if (val == null)
-		    {
+            {
                 val = defaultValue;
-		    }
+            }
 
             return val;
-	    }
-    	
-	    /// <summary>
+        }
+
+        /// <summary>
         /// Sets the specified attribute on the user object if it is an XML node.
-	    /// </summary>
+        /// </summary>
         /// <param name="name">Name of the attribute whose value should be set.</param>
         /// <param name="value">New value of the attribute.</param>
-	    public void SetAttribute(String name, String value)
-	    {
-		    Object userObject = Value;
-    		
-		    if (userObject is XmlElement)
-		    {
+        public void SetAttribute(String name, String value)
+        {
+            Object userObject = Value;
+
+            if (userObject is XmlElement)
+            {
                 XmlElement element = (XmlElement)userObject;
-			    element.SetAttribute(name, value);
-		    }
-	    }
-    	
+                element.SetAttribute(name, value);
+            }
+        }
+
         /* (non-Dotnetdoc)
          * see com.mxgraph.mxICell.Clone()
          */

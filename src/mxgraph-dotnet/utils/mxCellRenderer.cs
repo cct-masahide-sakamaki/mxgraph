@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
+using System.Text;
 
 namespace com.mxgraph
 {
@@ -119,7 +119,7 @@ namespace com.mxgraph
         public static Image CreateImage(mxGraph graph, Object[] cells, double scale, Color? background,
             bool antiAlias, mxRectangle clip, mxGdiCanvas graphicsCanvas)
         {
-            mxImageCanvas canvas = (mxImageCanvas) DrawCells(graph, cells, scale, clip,
+            mxImageCanvas canvas = (mxImageCanvas)DrawCells(graph, cells, scale, clip,
                 new ImageCanvasFactory(graphicsCanvas, background, antiAlias));
 
             return canvas.Destroy();

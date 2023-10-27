@@ -221,12 +221,12 @@ namespace com.mxgraph
         /// <param name="isSource">Boolean that specifies if the edge should be removed
         /// from its source or target terminal.</param>
         void RemoveFromTerminal(bool isSource);
-        
+
         /// <summary>
         /// Returns a clone of this cell.
         /// </summary>
         /// <returns>Returns a clone of this cell.</returns>
-	    Object Clone();
+        Object Clone();
 
     }
 

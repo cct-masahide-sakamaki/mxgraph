@@ -1,12 +1,12 @@
 // $Id: mxGraphView.cs,v 1.2 2014/02/19 09:40:59 gaudenz Exp $
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Text;
 
 namespace com.mxgraph
 {
@@ -381,7 +381,7 @@ namespace com.mxgraph
                     }
                 }
             }
-            
+
             return state;
         }
 
@@ -487,13 +487,13 @@ namespace com.mxgraph
         public void UpdateEdgeState(mxCellState state, mxGeometry geo, mxCellState source, mxCellState target)
         {
             // This will remove edges with no terminals and no terminal points
-		    // as such edges are invalid and produce NPEs in the edge styles.
-		    // Also removes connected edges that have no visible terminals.
-		    if ((graph.Model.GetTerminal(state.Cell, true) != null && source == null) ||
-			    (source == null && geo.GetTerminalPoint(true) == null) ||
-			    (graph.Model.GetTerminal(state.Cell, false) != null && target == null) ||
-			    (target == null && geo.GetTerminalPoint(false) == null))
-		    {
+            // as such edges are invalid and produce NPEs in the edge styles.
+            // Also removes connected edges that have no visible terminals.
+            if ((graph.Model.GetTerminal(state.Cell, true) != null && source == null) ||
+                (source == null && geo.GetTerminalPoint(true) == null) ||
+                (graph.Model.GetTerminal(state.Cell, false) != null && target == null) ||
+                (target == null && geo.GetTerminalPoint(false) == null))
+            {
                 RemoveState(state.Cell, true);
             }
             else

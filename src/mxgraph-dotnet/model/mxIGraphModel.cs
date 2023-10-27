@@ -1,9 +1,9 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Threading;
 using System.Collections;
-using System.Text;
 using System.Drawing;
+using System.Text;
+using System.Threading;
 
 namespace com.mxgraph
 {
@@ -31,7 +31,7 @@ namespace com.mxgraph
             get;
             set;
         }
-        
+
         /// <summary>
         /// Returns an array of clones for the given array of cells.
         /// Depending on the value of includeChildren, a deep clone is created for

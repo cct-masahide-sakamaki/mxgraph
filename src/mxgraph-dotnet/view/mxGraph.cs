@@ -2,8 +2,8 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
+using System.Text;
 
 namespace com.mxgraph
 {
@@ -540,7 +540,7 @@ namespace com.mxgraph
 
             return model.Add(parent, vertex, index);
         }
-        
+
         /// <summary>
         /// Creates a new vertex to be used in insertVertex.
         /// </summary>
@@ -795,8 +795,8 @@ namespace com.mxgraph
         /// <param name="terminal">Cell state that represents the terminal.</param>
         /// <param name="source">Boolean indicating if the terminal is the source or target.</param>
         /// <returns></returns>
-		public mxConnectionConstraint GetConnectionConstraint(mxCellState edge, mxCellState terminal, bool source)
-		{
+        public mxConnectionConstraint GetConnectionConstraint(mxCellState edge, mxCellState terminal, bool source)
+        {
             mxPoint point = null;
             string key = (source) ? mxConstants.STYLE_EXIT_X : mxConstants.STYLE_ENTRY_X;
 
@@ -808,21 +808,21 @@ namespace com.mxgraph
                 if (edge.Style.ContainsKey(key))
                 {
                     double y = mxUtils.GetDouble(edge.Style, key);
-					point = new mxPoint(x, y);
-				}
-			}
-			
-			bool perimeter = false;
-			
-			if (point != null)
-			{
-				perimeter = mxUtils.IsTrue(edge.Style, (source) ?
-					mxConstants.STYLE_EXIT_PERIMETER :
-					mxConstants.STYLE_ENTRY_PERIMETER, true);
-			}
-			
-			return new mxConnectionConstraint(point, perimeter);
-		}
+                    point = new mxPoint(x, y);
+                }
+            }
+
+            bool perimeter = false;
+
+            if (point != null)
+            {
+                perimeter = mxUtils.IsTrue(edge.Style, (source) ?
+                    mxConstants.STYLE_EXIT_PERIMETER :
+                    mxConstants.STYLE_ENTRY_PERIMETER, true);
+            }
+
+            return new mxConnectionConstraint(point, perimeter);
+        }
 
         /// <summary>
         /// Returns the nearest point in the list of absolute points or the center
@@ -831,25 +831,25 @@ namespace com.mxgraph
         /// <param name="vertex">Cell state that represents the vertex.</param>
         /// <param name="constraint">Connection constraint that represents the connection
         /// point constraint as returned by getConnectionConstraint.</param>
-		public mxPoint GetConnectionPoint(mxCellState vertex, mxConnectionConstraint constraint)
-		{
+        public mxPoint GetConnectionPoint(mxCellState vertex, mxConnectionConstraint constraint)
+        {
             mxPoint point = null;
-			
-			if (vertex != null &&
-				constraint.Point != null)
-			{
-				point = new mxPoint(vertex.X + constraint.Point.X * vertex.Width,
-						vertex.Y + constraint.Point.Y * vertex.Height);
-			}
-			
-			if (point != null &&
-				constraint.Perimeter)
-			{
-				point = View.GetPerimeterPoint(vertex, point, false);
-			}
-			
-			return point;
-		}
+
+            if (vertex != null &&
+                constraint.Point != null)
+            {
+                point = new mxPoint(vertex.X + constraint.Point.X * vertex.Width,
+                        vertex.Y + constraint.Point.Y * vertex.Height);
+            }
+
+            if (point != null &&
+                constraint.Perimeter)
+            {
+                point = View.GetPerimeterPoint(vertex, point, false);
+            }
+
+            return point;
+        }
 
         /// <summary>
         /// Returns the cell at the given location.
@@ -977,7 +977,7 @@ namespace com.mxgraph
 
                 if (state != null)
                 {
-                    int start = (int)  Math.Max(2, Math.Round(mxUtils.GetDouble(state.Style,
+                    int start = (int)Math.Max(2, Math.Round(mxUtils.GetDouble(state.Style,
                             mxConstants.STYLE_STARTSIZE, mxConstants.DEFAULT_STARTSIZE)
                             * view.Scale));
                     Rectangle rect = state.GetRectangle();
@@ -1148,7 +1148,7 @@ namespace com.mxgraph
         {
             return GetEdges(cell, parent, true, true, true);
         }
-        
+
         /// <summary>
         /// Returns the incoming and/or outgoing edges for the given cell.
         /// If the optional parent argument is specified, then only edges are returned
@@ -1242,7 +1242,7 @@ namespace com.mxgraph
         public bool IsValidAncestor(Object cell, Object parent, bool recurse)
         {
             return (recurse ? model.IsAncestor(parent, cell) : model
-			    .GetParent(cell) == parent);
+                .GetParent(cell) == parent);
         }
 
         /// <summary>
@@ -1371,7 +1371,7 @@ namespace com.mxgraph
         {
             return FindTreeRoots(parent, false);
         }
-        
+
         /// <summary>
         /// Returns all children in the given parent which do not have incoming
         /// edges. If the result is empty then the with the greatest difference
@@ -1497,39 +1497,39 @@ namespace com.mxgraph
                 Object obj = canvas.DrawCell(state);
                 Object lab = null;
 
-			    // Holds the current clipping region in case the label will
-			    // be clipped
+                // Holds the current clipping region in case the label will
+                // be clipped
                 Region clip = null;
                 Region newClip = new Region(state.GetRectangle());
 
-			    // Indirection for image canvas that contains a graphics canvas
+                // Indirection for image canvas that contains a graphics canvas
                 mxICanvas clippedCanvas = (mxUtils.GetString(state.Style, mxConstants.
                     STYLE_OVERFLOW, "").Equals("hidden")) ? canvas : null;
 
-			    if (clippedCanvas is mxImageCanvas)
-			    {
-				    clippedCanvas = ((mxImageCanvas) clippedCanvas).GdiCanvas;
-				    Point pt = ((mxImageCanvas) canvas).Translate;
+                if (clippedCanvas is mxImageCanvas)
+                {
+                    clippedCanvas = ((mxImageCanvas)clippedCanvas).GdiCanvas;
+                    Point pt = ((mxImageCanvas)canvas).Translate;
                     newClip.Translate(pt.X, pt.Y);
-			    }
+                }
 
-			    if (clippedCanvas is mxGdiCanvas)
-			    {
-				    Graphics g = ((mxGdiCanvas) clippedCanvas).Graphics;
-				    clip = g.Clip;
+                if (clippedCanvas is mxGdiCanvas)
+                {
+                    Graphics g = ((mxGdiCanvas)clippedCanvas).Graphics;
+                    clip = g.Clip;
                     g.Clip = newClip;
-			    }
+                }
 
                 if (label != null && state.LabelBounds != null)
                 {
                     lab = canvas.DrawLabel(label, state, false);
                 }
-                    
-			    // Restores the previous clipping region
-			    if (clippedCanvas is mxGdiCanvas)
-			    {
+
+                // Restores the previous clipping region
+                if (clippedCanvas is mxGdiCanvas)
+                {
                     ((mxGdiCanvas)clippedCanvas).Graphics.Clip = clip;
-			    }
+                }
 
                 // Invokes the cellDrawn callback with the object which was created
                 // by the canvas to represent the cell graphically

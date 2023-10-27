@@ -1,9 +1,9 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 
 namespace com.mxgraph

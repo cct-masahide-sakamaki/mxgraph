@@ -1,11 +1,11 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Drawing;
+using System.Text;
+using System.Threading;
 
 namespace com.mxgraph
 {
@@ -16,7 +16,7 @@ namespace com.mxgraph
     /// all changes, whereas the cells contain the atomic operations for
     /// updating the actual datastructure.
     /// </summary>
-    public class mxGraphModel: mxIGraphModel
+    public class mxGraphModel : mxIGraphModel
     {
         /// <summary>
         /// Fires when the graph model has changed.
@@ -63,7 +63,7 @@ namespace com.mxgraph
         /// <summary>
         /// Constructs a new empty graph model.
         /// </summary>
-        public mxGraphModel(): this(null) {}
+        public mxGraphModel() : this(null) { }
 
         /// <summary>
         /// Constructs a new graph model. If no root is specified
@@ -144,11 +144,12 @@ namespace com.mxgraph
         public Object Root
         {
             get { return root; }
-            set {
+            set
+            {
                 BeginUpdate();
                 try
                 {
-                    root = (mxICell) value;
+                    root = (mxICell)value;
                     this.nextId = 0;
                     this.cells = null;
                     CellAdded(root);
@@ -185,75 +186,75 @@ namespace com.mxgraph
         /// Inner helper method for cloning cells recursively.
         /// </summary>
         protected Object CloneCell(Object cell, Hashtable mapping, bool includeChildren)
-	    {
-		    if (cell is mxICell)
-		    {
-		    	mxICell mxc = (mxICell) mapping[cell];
-		    	
-		    	if (mxc == null)
-		    	{
-					mxc = (mxICell) ((mxICell) cell).Clone();
-				    mapping[cell] = mxc;
-	
-				    if (includeChildren)
-				    {
-					    int childCount = GetChildCount(cell);
-	
-					    for (int i = 0; i < childCount; i++)
-					    {
-						    Object clone = CloneCell(GetChildAt(cell, i), mapping, true);
-						    mxc.Insert((mxICell) clone);
-					    }
-				    }
-				}
+        {
+            if (cell is mxICell)
+            {
+                mxICell mxc = (mxICell)mapping[cell];
 
-			    return mxc;
-		    }
+                if (mxc == null)
+                {
+                    mxc = (mxICell)((mxICell)cell).Clone();
+                    mapping[cell] = mxc;
 
-		    return null;
-	    }
+                    if (includeChildren)
+                    {
+                        int childCount = GetChildCount(cell);
+
+                        for (int i = 0; i < childCount; i++)
+                        {
+                            Object clone = CloneCell(GetChildAt(cell, i), mapping, true);
+                            mxc.Insert((mxICell)clone);
+                        }
+                    }
+                }
+
+                return mxc;
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Inner helper method for restoring the connections in
         /// a network of cloned cells.
         /// </summary>
         protected void RestoreClone(Object clone, Object cell, Hashtable mapping)
-	    {
-		    if (clone is mxICell)
-		    {
-			    mxICell mxc = (mxICell) clone;
-			    Object source = GetTerminal(cell, true);
+        {
+            if (clone is mxICell)
+            {
+                mxICell mxc = (mxICell)clone;
+                Object source = GetTerminal(cell, true);
 
-			    if (source is mxICell)
-			    {
-				    mxICell tmp = (mxICell) mapping[source];
+                if (source is mxICell)
+                {
+                    mxICell tmp = (mxICell)mapping[source];
 
-				    if (tmp != null)
-				    {
-					    tmp.InsertEdge(mxc, true);
-				    }
-			    }
+                    if (tmp != null)
+                    {
+                        tmp.InsertEdge(mxc, true);
+                    }
+                }
 
-			    Object target = GetTerminal(cell, false);
+                Object target = GetTerminal(cell, false);
 
-			    if (target is mxICell)
-			    {
-				    mxICell tmp = (mxICell) mapping[target];
+                if (target is mxICell)
+                {
+                    mxICell tmp = (mxICell)mapping[target];
 
-				    if (tmp != null)
-				    {
-					    tmp.InsertEdge(mxc, false);
-				    }
-			    }
-		    }
-    		
-		    int childCount = GetChildCount(clone);
+                    if (tmp != null)
+                    {
+                        tmp.InsertEdge(mxc, false);
+                    }
+                }
+            }
 
-		    for (int i = 0; i < childCount; i++)
-		    {
-			    RestoreClone(GetChildAt(clone, i), GetChildAt(cell, i), mapping);
-		    }
-	    }
+            int childCount = GetChildCount(clone);
+
+            for (int i = 0; i < childCount; i++)
+            {
+                RestoreClone(GetChildAt(clone, i), GetChildAt(cell, i), mapping);
+            }
+        }
 
         /* (non-Dotnetdoc)
          * see com.mxgraph.mxIGraphModel.IsAncestor(Object, Object)
@@ -562,7 +563,7 @@ namespace com.mxgraph
             Object source = GetTerminal(edge, true);
             Object target = GetTerminal(edge, false);
             Object cell = null;
-           
+
             // Uses the first non-relative descendants of the source terminal
             while (source != null && !IsEdge(source) &&
                 GetGeometry(source) != null && GetGeometry(source).Relative)
@@ -576,7 +577,7 @@ namespace com.mxgraph
             {
                 target = GetParent(target);
             }
-		
+
             if (IsAncestor(root, source) &&
                 IsAncestor(root, target))
             {
@@ -603,7 +604,7 @@ namespace com.mxgraph
                         double dx = origin2.X - origin1.X;
                         double dy = origin2.Y - origin1.Y;
 
-                        geo = (mxGeometry) geo.Clone();
+                        geo = (mxGeometry)geo.Clone();
                         geo.Translate(-dx, -dy);
                         SetGeometry(edge, geo);
                     }
@@ -741,7 +742,7 @@ namespace com.mxgraph
             BeginUpdate();
             try
             {
-                ((mxICell) cell).Value = value;
+                ((mxICell)cell).Value = value;
             }
             finally
             {
@@ -940,41 +941,41 @@ namespace com.mxgraph
         protected void MergeChildrenImpl(mxICell from, mxICell to, bool cloneAllEdges, Dictionary<Object, Object> mapping)
         {
             BeginUpdate();
-		    try
-		    {
+            try
+            {
                 int childCount = from.ChildCount();
 
-			    for (int i = 0; i < childCount; i++)
-			    {
+                for (int i = 0; i < childCount; i++)
+                {
                     mxICell cell = from.GetChildAt(i);
-				    String id = cell.Id;
-                    mxICell target = (mxICell) ((id != null && (!IsEdge(cell) || !cloneAllEdges)) ? GetCell(id)
-						    : null);
+                    String id = cell.Id;
+                    mxICell target = (mxICell)((id != null && (!IsEdge(cell) || !cloneAllEdges)) ? GetCell(id)
+                            : null);
 
-				    // Clones and adds the child if no cell exists for the id
-				    if (target == null)
-				    {
-					    mxCell clone = (mxCell) cell.Clone();
-					    clone.Id = id;
+                    // Clones and adds the child if no cell exists for the id
+                    if (target == null)
+                    {
+                        mxCell clone = (mxCell)cell.Clone();
+                        clone.Id = id;
 
                         // Do *NOT* use model.add as this will move the edge away
                         // from the parent in updateEdgeParent if maintainEdgeParent
                         // is enabled in the target model
                         target = to.Insert(clone);
                         CellAdded(target);
-				    }
+                    }
 
-				    // Stores the mapping for later reconnecting edges
-				    mapping[cell] = target;
+                    // Stores the mapping for later reconnecting edges
+                    mapping[cell] = target;
 
-				    // Recurses
-				    MergeChildrenImpl(cell, target, cloneAllEdges, mapping);
-			    }
-		    }
-		    finally
-		    {
-			    EndUpdate();
-		    }
+                    // Recurses
+                    MergeChildrenImpl(cell, target, cloneAllEdges, mapping);
+                }
+            }
+            finally
+            {
+                EndUpdate();
+            }
         }
 
         /// <summary>

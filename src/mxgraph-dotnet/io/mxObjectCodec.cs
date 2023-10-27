@@ -1,13 +1,13 @@
 // $Id: mxObjectCodec.cs,v 1.3 2013/08/18 20:19:11 gaudenz Exp $
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Reflection;
 using System.Text;
+using System.Xml;
 
 namespace com.mxgraph
 {
@@ -521,7 +521,7 @@ namespace com.mxgraph
                 // Gets a boolean property by adding Is-Prefix
                 if (property == null)
                 {
-                    property = obj.GetType().GetProperty("Is"+name);
+                    property = obj.GetType().GetProperty("Is" + name);
                 }
 
                 try
@@ -551,7 +551,7 @@ namespace com.mxgraph
                 // Finds a boolean property by adding Is-Prefix
                 if (property == null)
                 {
-                    property = obj.GetType().GetProperty("Is"+name);
+                    property = obj.GetType().GetProperty("Is" + name);
 
                     if ((!value.Equals("1") && !value.Equals("0")) ||
                         property.PropertyType != true.GetType())
@@ -564,7 +564,7 @@ namespace com.mxgraph
                 {
                     value = ConvertValueFromXml(property.PropertyType, value);
 
-					// Converts collection to a typed array or typed list
+                    // Converts collection to a typed array or typed list
                     if (value is ArrayList)
                     {
                         ArrayList list = (ArrayList)value;
@@ -800,7 +800,7 @@ namespace com.mxgraph
             {
                 Object template = GetFieldTemplate(obj, fieldname, child);
                 Object value = null;
-                
+
                 if (child.Name.Equals("add"))
                 {
                     value = ((XmlElement)child).GetAttribute("value");
@@ -828,8 +828,8 @@ namespace com.mxgraph
         /// based on the encoded child.
         /// </summary>
         protected Object GetFieldTemplate(Object obj, String fieldname, XmlNode child)
-	    {
-		    Object template = GetFieldValue(obj, fieldname);
+        {
+            Object template = GetFieldValue(obj, fieldname);
 
             // Arrays are replaced completely
             if (template != null && template.GetType().IsArray)
@@ -841,9 +841,9 @@ namespace com.mxgraph
             {
                 ((IList)template).Clear();
             }
-    		
-		    return template;
-	    }
+
+            return template;
+        }
 
         /// <summary>
         /// Sets the decoded child node as a value of the given object. If the
@@ -854,7 +854,7 @@ namespace com.mxgraph
         /// override this with the correct code to add an entry to an object.
         /// </summary>
         protected void AddObjectValue(Object obj, String fieldname, Object value, Object template)
-	    {
+        {
             if (value != null && !value.Equals(template))
             {
                 if (fieldname != null && obj is IDictionary)
@@ -872,7 +872,7 @@ namespace com.mxgraph
                     ((IList)obj).Add(value);
                 }
             }
-	    }
+        }
 
         /// <summary>
         /// 

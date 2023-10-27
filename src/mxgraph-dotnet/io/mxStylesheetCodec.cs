@@ -37,10 +37,10 @@ namespace com.mxgraph
         public override XmlNode Encode(mxCodec enc, Object obj)
         {
             XmlElement node = enc.Document.CreateElement(GetName());
-    		
-		    if (obj is mxStylesheet)
-		    {
-			    mxStylesheet stylesheet = (mxStylesheet) obj;
+
+            if (obj is mxStylesheet)
+            {
+                mxStylesheet stylesheet = (mxStylesheet)obj;
 
                 foreach (KeyValuePair<string, Dictionary<string, Object>> entry in stylesheet.Styles)
                 {
@@ -50,19 +50,19 @@ namespace com.mxgraph
                     foreach (KeyValuePair<string, Object> entry2 in entry.Value)
                     {
                         XmlElement entryNode = enc.Document.CreateElement("add");
-					    entryNode.SetAttribute("as", entry2.Key);
+                        entryNode.SetAttribute("as", entry2.Key);
                         entryNode.SetAttribute("value", getStringValue(entry2));
-					    styleNode.AppendChild(entryNode);
+                        styleNode.AppendChild(entryNode);
                     }
 
-				    if (styleNode.ChildNodes.Count > 0)
-				    {
-					    node.AppendChild(styleNode);
-				    }
-			    }
-		    }
-    		
-		    return node;
+                    if (styleNode.ChildNodes.Count > 0)
+                    {
+                        node.AppendChild(styleNode);
+                    }
+                }
+            }
+
+            return node;
         }
 
         /// <summary>
@@ -111,11 +111,11 @@ namespace com.mxgraph
                 {
                     if (!ProcessInclude(dec, node, obj) && node.Name.Equals("add") && node is XmlElement)
                     {
-                        string name = ((XmlElement) node).GetAttribute("as");
+                        string name = ((XmlElement)node).GetAttribute("as");
 
                         if (name != null && name.Length > 0)
                         {
-                            string extend = ((XmlElement) node).GetAttribute("extend");
+                            string extend = ((XmlElement)node).GetAttribute("extend");
                             Dictionary<string, Object> style = (extend != null && ((mxStylesheet)obj).Styles.ContainsKey(extend)) ?
                                     ((mxStylesheet)obj).Styles[extend] : null;
 
@@ -165,7 +165,7 @@ namespace com.mxgraph
                                 entry = entry.NextSibling;
                             }
 
-                            ((mxStylesheet) obj).PutCellStyle(name, style);
+                            ((mxStylesheet)obj).PutCellStyle(name, style);
                         }
                     }
 

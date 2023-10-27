@@ -1,8 +1,8 @@
 // Copyright (c) 2007-2008, Gaudenz Alder
 using System;
 using System.Collections;
-using System.Text;
 using System.Drawing;
+using System.Text;
 
 namespace com.mxgraph
 {
@@ -25,7 +25,7 @@ namespace com.mxgraph
         /// <summary>
         /// Constructs a new rectangle at (0, 0) with the width and height set to 0.
         /// </summary>
-        public mxRectangle(): this(0, 0, 0, 0) {}
+        public mxRectangle() : this(0, 0, 0, 0) { }
 
         /// <summary>
         /// Constructs a copy of the given rectangle.
@@ -48,7 +48,7 @@ namespace com.mxgraph
         /// <param name="y">Y-coordinate of the new rectangle.</param>
         /// <param name="width">Width of the new rectangle.</param>
         /// <param name="height">Height of the new rectangle.</param>
-        public mxRectangle(double x, double y, double width, double height): base(x, y)
+        public mxRectangle(double x, double y, double width, double height) : base(x, y)
         {
             Width = width;
             Height = height;
@@ -170,7 +170,7 @@ namespace com.mxgraph
         {
             if (obj is mxRectangle)
             {
-                mxRectangle rect = (mxRectangle) obj;
+                mxRectangle rect = (mxRectangle)obj;
 
                 return rect.X == X &&
                     rect.Y == Y &&
