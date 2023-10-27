@@ -3,3 +3,9 @@ javascript/dist
 .jshintrc
 javascript/examples/**/dist
 .idea/
+.vs/
+.vscode/
+bin/
+obj/
+*.csproj.user
+
